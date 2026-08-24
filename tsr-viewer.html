@@ -1,0 +1,3877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenShift TSR Viewer</title>
+<link rel="icon" href="data:image/x-icon;base64,AAABAAMAMDAAAAEAIACoJQAANgAAACAgAAABACAAqBAAAN4lAAAQEAAAAQAgAGgEAACGNgAAKAAAADAAAABgAAAAAQAgAAAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuAQAA7gIAAO4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7gEAAO4MAADuIQAA7jwAAO5YAADucwAA7okAAO6ZAADupAAA7qkAAO6nAADunQAA7o4AAO52AADuVgAA7jEAAO4RAADuAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuAQAA7hAAAO4zAADuZQAA7pkAAO7DAADu4QAA7vMAAO79AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/AAA7u0AAO7KAADuiwAA7joAAO4HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuAQAA7hYAAO5KAADujAAA7sgAAO7tAADu/QAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7u4AAO6eAADuKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7goAAO48AADuigAA7tAAAO73AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu1gAA7kYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO4WAADuXQAA7rYAAO7wAADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7t0AAO46AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuGQAA7mwAAO7LAADu+gAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO64AADuEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7hAAAO5kAADuzQAA7vwAAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO72AADuXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO4EAADuRAAA7roAAO76AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA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7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO76AADuUgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO4FAADuqAAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7mAADuKQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuXgAA7vwAAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7DAADuDQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuIQAA7twAAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO6OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuAgAA7p0AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7ukAAO49AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7lIAAO75AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu5gAA7mQAAO4CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7hkAAO7TAADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7vIAAO6qAADuOAAA7gIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO6HAADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7sAADuqAAA7kcAAO4JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO4mAADu0gAA7v8AAO7/AADu/wAA7vQAAO69AADuhgAA7pgAAO7oAADu/wAA7v8AAO7/AADu/wAA7v8AAO76AADu1AAA7ooAAO43AADuBwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuOgAA7qwAAO7MAADupAAA7kwAAO4MAAAAAAAA7gIAAO5KAADu1wAA7v8AAO72AADu2QAA7qAAAO5WAADuGgAA7gEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7gYAAO4PAADuBAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuKAAA7lwAAO5FAADuHAAA7gMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///////wAA////////AAD///////8AAP///////wAA////////AAD///////8AAP////wH/wAA////AAA/AAD///AAAA8AAP//gAAABwAA//4AAAADAAD/+AAAAAEAAP/gAAAAAQAA/4AAAAAAAAD+AAAAAAAAAPwAAAAAAAAA+AAAAAAAAADwAAAAAAAAAOAAAAAAAQAAwAAAAAABAACAAAAAAAMAAIAAAAAABwAAAAAAAAAPAAAAAAAAAD8AAAAAAAAA/wAAAAAAAAD/AACAAAAAAP8AAMAAAAAB/wAA4AAAAAH/AAD+AAAAAf8AAP/AAAAB/wAA/+AAAAH/AAD/4AAAA/8AAP/gAAAD/wAA//AAAAP/AAD/8AAAA/8AAP/wAAAH/wAA//gAAA//AAD/+AAAH/8AAP/4AAB//wAA//wAAf//AAD//j4P//8AAP///////wAA////////AAD///////8AAP///////wAA////////AAD///////8AACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v0AAO5bAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7ikAAO7kAADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu6QAA7i0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuBQAA7qoAAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v4AAO6aAADuBwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuXgAA7vwAAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7/AADu/wAA7v8AAO7kAADugQAA7hQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO4cAADu0QAA7v8AAO7/AADu/AAA7ucAAO7uAADu/wAA7v8AAO7/AADu/wAA7vwAAO7YAADuhwAA7iwAAO4CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO5MAADuxQAA7sIAAO5vAADuKAAA7j4AAO7BAADu9wAA7uEAAO6sAADuYAAA7h0AAO4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7gEAAO4OAADuDAAAAAAAAAAAAAAAAAAA7hoAAO5AAADuIwAA7gYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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" type="image/x-icon">
+<style>
+:root {
+  --bg: #161616;
+  --panel: #232323;
+  --panel2: #2c2c2c;
+  --border: #464646;
+  --text: #f4f4f4;
+  --muted: #b3b3b3;
+  --accent: #ee0000;
+  --accent2: #be0000;
+  --fail: #f87171;
+  --warn: #fbbf24;
+  --pass: #4ade80;
+  --info: #60a5fa;
+  --skip: #a5acb8;
+  --na: #7e7e7e;
+  --lim: #f59e0b;
+  --chip: #353535;
+  --focus: #93c5fd;
+  --sidebar-w: 320px;
+  --sidebar-h: 40vh;
+  --detail-h: 42vh;
+  --split: 6px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font: 13px/1.45 system-ui, Segoe UI, sans-serif; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: #93c5fd; }
+.app { display: grid; grid-template-rows: auto 1fr; height: 100%; }
+.top {
+  display: grid;
+  grid-template-columns: auto minmax(min-content, 1fr) auto;
+  gap: 12px; align-items: center;
+  padding: 8px 14px; border-bottom: 1px solid var(--border); background: var(--panel);
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 16px; letter-spacing: .02em;
+  flex-shrink: 0;
+}
+.brand-logo { height: 24px; width: auto; display: block; flex-shrink: 0; }
+.brand-title span { color: var(--accent); }
+.meta {
+  justify-self: center;
+  width: fit-content;
+  min-width: min-content;
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  gap: 3px 18px;
+  align-items: baseline;
+  padding: 6px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: left;
+}
+.meta-item {
+  display: flex; gap: 6px; align-items: baseline; min-width: 0;
+}
+.meta-item .k {
+  color: var(--muted); font-size: 10px; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; white-space: nowrap;
+}
+.meta-item .v { color: var(--text); white-space: nowrap; }
+.top-actions { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; flex-shrink: 0; }
+.btn {
+  background: var(--panel2); border: 1px solid var(--border); color: var(--text);
+  padding: 6px 10px; border-radius: 6px;
+}
+.btn:hover { border-color: #707070; }
+.btn-primary { background: var(--accent2); border-color: var(--accent); }
+.btn-primary:hover { background: var(--accent); }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; padding: 0; flex-shrink: 0;
+}
+.btn-icon svg {
+  width: 16px; height: 16px; display: block;
+  fill: none; stroke: currentColor; stroke-width: 1.85;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.btn-export {
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 42px; height: 32px; padding: 2px 3px 2px; gap: 0; flex-shrink: 0;
+}
+.btn-export svg {
+  width: 12px; height: 12px; display: block;
+  fill: none; stroke: currentColor; stroke-width: 1.85;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.btn-export .fmt {
+  font-size: 8px; font-weight: 700; letter-spacing: .04em; line-height: 1.1;
+}
+.btn-export .scope {
+  font-size: 7px; font-weight: 600; letter-spacing: .02em; line-height: 1;
+  color: var(--muted);
+}
+.export-pair {
+  display: inline-flex; gap: 2px; align-items: center;
+  padding: 2px; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--bg);
+}
+.btn-tip { position: relative; display: inline-flex; }
+.btn-tip[data-tip]::after,
+.col-picker > summary[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute; top: calc(100% + 7px); left: 50%;
+  transform: translateX(-50%);
+  background: #1d1d1d; color: #f4f4f4; border: 1px solid var(--border);
+  border-radius: 6px; padding: 5px 8px; font-size: 12px; line-height: 1.3;
+  white-space: nowrap; z-index: 40; pointer-events: none;
+  opacity: 0; box-shadow: 0 8px 20px rgba(0,0,0,.4);
+}
+.btn-tip:hover::after,
+.btn-tip:focus-within::after,
+.col-picker > summary[data-tip]:hover::after,
+.col-picker > summary[data-tip]:focus-visible::after { opacity: 1; }
+.col-picker[open] > summary::after { opacity: 0 !important; }
+.top-actions > .btn-tip:last-child[data-tip]::after,
+.export-pair .btn-tip:last-child[data-tip]::after {
+  left: auto; right: 0; transform: none;
+}
+.svg-sprite {
+  position: absolute; width: 0; height: 0; overflow: hidden;
+}
+.file-btn { position: relative; }
+.file-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.main {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) var(--split) minmax(0, 1fr);
+  min-height: 0;
+}
+.main.sidebar-hidden {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+.main.sidebar-hidden > .sidebar,
+.main.sidebar-hidden > .split-v { display: none !important; }
+.sidebar {
+  background: var(--panel);
+  overflow: auto; padding: 12px; min-width: 0; min-height: 0;
+}
+.split {
+  background: var(--border);
+  position: relative;
+  z-index: 3;
+  touch-action: none;
+  flex-shrink: 0;
+}
+.split::after {
+  content: "";
+  position: absolute;
+}
+.split-v { cursor: col-resize; }
+.split-v::after { inset: 0 -5px; }
+.split-h { cursor: row-resize; display: none; }
+.split-h::after { inset: -5px 0; }
+.split:hover, .split:focus, .split.dragging { background: var(--accent); outline: none; }
+.split:focus-visible { outline: 1px solid var(--focus); }
+body.resizing-v, body.resizing-v * { cursor: col-resize !important; user-select: none !important; }
+body.resizing-h, body.resizing-h * { cursor: row-resize !important; user-select: none !important; }
+body.resizing-v-stack, body.resizing-v-stack * { cursor: row-resize !important; user-select: none !important; }
+.sidebar h2 { margin: 16px 0 6px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.sidebar h2:first-child { margin-top: 0; }
+.active-wrap {
+  position: sticky; top: 0; z-index: 4;
+  background: var(--panel); margin: -12px -12px 10px; padding: 12px 12px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.active-filters { display: flex; flex-wrap: wrap; gap: 6px; min-height: 22px; }
+.filter-chip {
+  display: inline-flex; align-items: center; gap: 5px; max-width: 100%;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 999px;
+  padding: 2px 4px 2px 8px; font-size: 12px;
+}
+.filter-chip .k { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .04em; flex-shrink: 0; }
+.filter-chip .v { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px; }
+.filter-chip .x {
+  flex-shrink: 0; width: 18px; height: 18px; border: 0; border-radius: 50%;
+  background: transparent; color: var(--muted); padding: 0; line-height: 18px; font-size: 13px;
+}
+.filter-chip .x:hover { background: #4f4f4f; color: var(--text); }
+.hint { color: var(--muted); font-size: 11px; margin: 0 0 8px; }
+.search {
+  width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+  padding: 7px 9px;
+}
+.search:focus, .field:focus { outline: 1px solid var(--focus); border-color: var(--focus); }
+.field {
+  width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 8px; margin-bottom: 6px;
+}
+.row-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.chip {
+  background: var(--chip); border: 1px solid var(--border); border-radius: 999px;
+  padding: 3px 8px; font-size: 12px;
+}
+.chip.active { border-color: var(--text); background: #3e3e3e; }
+.group {
+  height: 180px; min-height: 64px; max-height: 70vh;
+  overflow: auto; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--bg); padding: 4px 6px; margin-bottom: 8px;
+  resize: vertical;
+}
+.group.tall { height: 240px; }
+label.check { display: flex; gap: 6px; align-items: flex-start; padding: 2px 0; }
+label.check input { margin-top: 2px; }
+.counts { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; padding-left: 14px; }
+.stat {
+  background: var(--panel2); border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 8px; min-width: 72px;
+}
+.stat b { display: block; font-size: 16px; }
+.stat span { color: var(--muted); font-size: 11px; }
+.content {
+  min-width: 0; min-height: 0;
+  display: grid;
+  grid-template-rows: auto auto minmax(80px, 1fr);
+}
+.content.has-detail {
+  grid-template-rows: auto auto minmax(80px, 1fr) var(--split) var(--detail-h);
+}
+.content.has-detail .split-h { display: block; }
+.content.has-detail .detail { display: flex; }
+.toolbar {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  padding: 8px 12px; border-bottom: 1px solid var(--border); background: var(--panel2);
+}
+.toolbar .search { max-width: 520px; flex: 1; }
+.col-picker { position: relative; }
+.col-picker > summary { list-style: none; position: relative; }
+.col-picker > summary::-webkit-details-marker { display: none; }
+.col-picker[open] > summary { border-color: #707070; }
+.col-picker-list {
+  position: absolute; left: 0; top: calc(100% + 4px); z-index: 20;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
+  padding: 8px 10px; min-width: 200px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.45);
+}
+.col-picker-list label.check { align-items: center; }
+.col-picker-list .btn { width: 100%; margin-top: 8px; text-align: center; }
+.table-wrap { overflow: auto; min-height: 0; }
+table.grid { border-collapse: collapse; table-layout: fixed; width: max-content; }
+table.grid th, table.grid td { padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; text-align: left; }
+table.grid td { overflow: hidden; word-wrap: break-word; overflow-wrap: anywhere; }
+table.grid td.col-note { overflow: visible; }
+table.grid th {
+  position: sticky; top: 0; background: var(--panel2); z-index: 1;
+  cursor: default; white-space: nowrap; overflow: visible; user-select: none;
+}
+table.grid th.col-mark, table.grid td.col-mark { width: 34px; text-align: center; cursor: default; padding-left: 10px; padding-right: 4px; }
+table.grid th.col-link, table.grid td.col-link { width: 28px; text-align: center; vertical-align: middle; cursor: default; padding: 0 3px; }
+table.grid td.col-link .link-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; padding: 0; border: none; background: none;
+  color: var(--muted); cursor: pointer; border-radius: 4px;
+  vertical-align: middle;
+}
+table.grid td.col-link .link-btn:hover { color: var(--text); background: var(--panel2); }
+table.grid td.col-link .link-btn svg { width: 14px; height: 14px; display: block;
+  fill: none; stroke: currentColor; stroke-width: 1.85; stroke-linecap: round; stroke-linejoin: round; }
+table.grid td.col-link .link-btn.copied { color: var(--pass); }
+table.grid th.col-note { cursor: default; white-space: nowrap; }
+table.grid td.col-mark { vertical-align: middle; }
+table.grid tr:hover td { background: #2f2f2f; }
+table.grid tr.export-mark td { background: #16241c; }
+table.grid tr.selected td {
+  background: #2a1a1a;
+  box-shadow: inset 0 2px 0 #fff, inset 0 -2px 0 #fff;
+}
+table.grid tr.selected td:first-child {
+  box-shadow: inset 2px 0 0 #fff, inset 0 2px 0 #fff, inset 0 -2px 0 #fff;
+}
+table.grid tr.selected td:last-child {
+  box-shadow: inset -2px 0 0 #fff, inset 0 2px 0 #fff, inset 0 -2px 0 #fff;
+}
+table.grid tr.selected.export-mark td { background: #2a2418; }
+table.grid tr.selected:hover td { background: #332222; }
+table.grid input.mark { width: 15px; height: 15px; margin: 0; cursor: pointer; accent-color: var(--pass); }
+table.grid th .col-resizer {
+  position: absolute; top: 0; right: -3px; width: 9px; height: 100%;
+  cursor: col-resize; z-index: 3;
+}
+table.grid th .col-resizer::after {
+  content: ""; position: absolute; top: 8px; bottom: 8px; left: 3px;
+  width: 2px; background: transparent; border-radius: 1px;
+}
+table.grid th .col-resizer:hover::after,
+table.grid th .col-resizer.active::after { background: var(--focus); }
+body.resizing-col, body.resizing-col * { cursor: col-resize !important; user-select: none !important; }
+textarea.note {
+  width: 100%; min-height: 42px; resize: vertical; box-sizing: border-box;
+  background: var(--bg); border: 1px solid var(--border); color: inherit;
+  border-radius: 4px; padding: 4px 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px; line-height: 1.45;
+}
+textarea.note:focus { outline: 1px solid var(--focus); border-color: var(--focus); }
+#detailNote { min-height: 210px; }
+.note-wrap {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px; align-items: start;
+}
+.note-expand {
+  width: 26px; height: 26px; padding: 0; margin-top: 1px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--panel2); border: 1px solid var(--border); border-radius: 4px;
+  color: var(--muted);
+}
+.note-expand:hover { color: var(--text); border-color: #707070; }
+.note-expand svg { width: 14px; height: 14px; display: block; fill: none; stroke: currentColor; stroke-width: 1.85; stroke-linecap: round; stroke-linejoin: round; }
+.note-modal {
+  position: fixed; inset: 0; z-index: 80;
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+}
+.note-modal[hidden] { display: none !important; }
+.note-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.62); }
+.note-modal-box {
+  position: relative; z-index: 1;
+  width: min(920px, 100%); height: min(72vh, 680px);
+  background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+  display: flex; flex-direction: column; min-height: 0;
+  box-shadow: 0 18px 48px rgba(0,0,0,.55);
+}
+.note-modal-head {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 14px; border-bottom: 1px solid var(--border);
+}
+.note-modal-copy { flex: 1; min-width: 0; }
+.note-modal-head h2 { margin: 0; font-size: 16px; line-height: 1.3; }
+.note-modal-head .muted { margin: 4px 0 0; }
+.note-modal-text {
+  flex: 1; min-height: 0; width: 100%; resize: none; border: 0; border-radius: 0;
+  padding: 14px 16px; font-size: 14px; line-height: 1.5;
+}
+.note-modal-text:focus { outline: none; }
+.note-modal-foot {
+  display: flex; justify-content: flex-end; gap: 8px;
+  padding: 10px 14px; border-top: 1px solid var(--border);
+}
+.badge {
+  display: inline-block; border: 1px solid; border-radius: 999px; padding: 1px 7px;
+  font-size: 11px; font-weight: 700; white-space: nowrap;
+}
+.b-fail { color: var(--fail); border-color: var(--fail); }
+.b-warning, .b-limitation, .b-potential-limitation, .b-support-limitation, .b-potential-support-limitation { color: var(--warn); border-color: var(--warn); }
+.b-pass { color: var(--pass); border-color: var(--pass); }
+.b-info { color: var(--info); border-color: var(--info); }
+.b-skip, .b-skip_with_content { color: var(--skip); border-color: var(--skip); }
+.b-na, .b-not-applicable { color: var(--na); border-color: var(--na); }
+.muted { color: var(--muted); }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
+.detail {
+  display: none;
+  flex-direction: column;
+  background: var(--panel); overflow: hidden;
+  min-height: 0; height: 100%; padding: 0;
+}
+.detail h3 { margin: 0 0 8px; font-size: 15px; }
+.find-meta {
+  color: var(--muted); font-size: 12px;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  flex-shrink: 0; z-index: 2;
+  padding: 8px 14px; margin: 0;
+  background: var(--panel); border-bottom: 1px solid var(--border);
+}
+.find-meta .detail-search {
+  width: 200px; max-width: min(240px, 42%);
+  flex: 0 1 220px; padding: 5px 8px; font-size: 12px;
+}
+.detail-find-nav {
+  display: inline-flex; align-items: center; gap: 2px;
+  color: var(--text);
+}
+.detail-find-nav[hidden] { display: none !important; }
+.detail-find-nav .btn-icon { width: 26px; height: 26px; }
+.detail-find-label { font-weight: 700; font-size: 11px; min-width: 3.6em; text-align: center; color: var(--muted); }
+.detail-body {
+  flex: 1; min-height: 0; overflow: auto;
+  padding: 8px 14px 12px;
+}
+.fail-nav {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-left: auto; color: var(--fail);
+}
+.fail-nav.is-warn { color: var(--warn); }
+.fail-nav[hidden] { display: none !important; }
+.fail-nav-label { font-weight: 700; font-size: 12px; min-width: 9.5em; text-align: center; }
+.issue-hit-current {
+  outline: 1px solid var(--fail); outline-offset: 2px;
+  background: rgba(248, 113, 113, .12); border-radius: 4px;
+}
+.issue-hit-current.b-warning,
+.issue-hit-current.b-limitation,
+.issue-hit-current.b-potential-limitation,
+.issue-hit-current.b-support-limitation,
+.issue-hit-current.b-potential-support-limitation,
+.issue-hit-current:has(.b-warning),
+.issue-hit-current:has(.b-limitation),
+.issue-hit-current:has(.b-potential-limitation),
+.issue-hit-current:has(.b-support-limitation),
+.issue-hit-current:has(.b-potential-support-limitation) {
+  outline-color: var(--warn);
+  background: rgba(251, 191, 36, .12);
+}
+.find-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.find-table > tbody > tr > th {
+  width: 88px; text-align: left; vertical-align: top; font-weight: 700;
+  color: #fecaca; background: #2a1212; border: 1px solid var(--border);
+  padding: 8px 10px; white-space: nowrap; text-transform: uppercase;
+  font-size: 11px; letter-spacing: .04em;
+}
+.find-table > tbody > tr > td {
+  border: 1px solid var(--border); padding: 8px 10px; vertical-align: top; overflow-x: auto;
+}
+.find-head { font-weight: 700; margin: 12px 0 4px; }
+.find-head:first-child { margin-top: 0; }
+.find-line { margin: 4px 0 4px 8px; }
+.find-tip { color: var(--warn); font-weight: 600; margin: 8px 0 4px; }
+.find-warn { color: var(--warn); margin-top: 6px; }
+.find-tree { margin: 4px 0 4px 16px; padding: 0; list-style: disc; }
+.find-tree ul { margin: 2px 0 2px 16px; }
+.find-tree .k { color: var(--muted); font-weight: 600; }
+.find-pre {
+  white-space: pre-wrap; word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px; margin: 6px 0; overflow: auto;
+}
+.logline {
+  white-space: pre-wrap; word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+}
+.kv { border-collapse: collapse; margin: 6px 0; width: auto; max-width: 100%; }
+.kv th, .kv td { border: 1px solid var(--border); padding: 4px 8px; text-align: left; vertical-align: top; }
+.kv th { color: var(--muted); font-weight: 600; background: var(--bg); white-space: nowrap; }
+.kv td { word-break: break-word; }
+.empty {
+  padding: 48px 20px; text-align: center; color: var(--muted);
+}
+.empty h2 { color: var(--text); font-size: 20px; }
+.drop { outline: 2px dashed var(--border); outline-offset: -12px; }
+.tag { display: inline-block; background: #3e3e3e; border-radius: 4px; padding: 0 6px; margin: 0 3px 3px 0; font-size: 11px; }
+mark.hit {
+  background: #fbbf24; color: #111; padding: 0 2px; border-radius: 2px;
+  font-weight: 650;
+}
+mark.dhit {
+  background: #fde047; color: #111; padding: 0 1px; border-radius: 2px;
+  font-weight: 650;
+}
+mark.dhit.is-current {
+  background: #fb923c; box-shadow: 0 0 0 1px #c2410c;
+}
+.diff-was {
+  display: block; font-size: 10px; font-weight: 650; margin-top: 3px; letter-spacing: .02em;
+}
+.diff-was.worse, .diff-was.worsened { color: var(--fail); }
+.diff-was.better, .diff-was.improved { color: var(--pass); }
+.diff-was.same { color: var(--muted); }
+.diff-was.added { color: var(--info); }
+.diff-was.changed { color: var(--warn); }
+.diff-was.gone { color: var(--muted); }
+tr.diff-worsened > td:first-child { box-shadow: inset 3px 0 0 var(--fail); }
+tr.diff-improved > td:first-child { box-shadow: inset 3px 0 0 var(--pass); }
+tr.diff-added > td:first-child { box-shadow: inset 3px 0 0 var(--info); }
+tr.diff-changed > td:first-child { box-shadow: inset 3px 0 0 var(--warn); }
+tr.diff-gone > td:first-child { box-shadow: inset 3px 0 0 var(--muted); }
+.compare-bar {
+  flex: 1 0 100%;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  margin: 2px 0 0; padding: 6px 8px;
+  background: #243044; border: 1px solid #3d5578; border-radius: 6px;
+  font-size: 12px;
+}
+.compare-bar[hidden] { display: none !important; }
+.compare-bar b { font-weight: 700; }
+.compare-bar .cmp-stat {
+  appearance: none; background: transparent; color: inherit;
+  border: 1px solid #3d5578; border-radius: 4px;
+  padding: 2px 8px; cursor: pointer; font: inherit;
+}
+.compare-bar .cmp-stat:hover, .compare-bar .cmp-stat.is-on { background: #2e405c; }
+.compare-bar .cmp-stat.worsened { color: var(--fail); }
+.compare-bar .cmp-stat.improved { color: var(--pass); }
+.compare-bar .cmp-stat.added { color: var(--info); }
+.compare-bar .cmp-stat.gone { color: var(--muted); }
+.help-box {
+  width: min(560px, 100%); height: auto; max-height: min(80vh, 640px);
+}
+.help-body { overflow: auto; padding: 8px 18px 18px; }
+.help-keys { width: 100%; border-collapse: collapse; }
+.help-keys th {
+  text-align: left; width: 44%; padding: 7px 12px 7px 0; vertical-align: top;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px; font-weight: 650; color: #fecaca;
+}
+.help-keys td { padding: 7px 0; color: var(--text); }
+.help-keys kbd {
+  display: inline-block; padding: 1px 5px; margin: 0 1px;
+  border: 1px solid #6b6b6b; border-bottom-width: 2px; border-radius: 4px;
+  background: #2a2a2a; color: #fecaca; font: inherit; white-space: nowrap;
+}
+@media (max-width: 980px) {
+  .top {
+    grid-template-columns: 1fr auto;
+  }
+  .meta {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: auto;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--sidebar-h) var(--split) minmax(0, 1fr);
+  }
+  .split-v { cursor: row-resize; }
+  .split-v::after { inset: -5px 0; }
+  .main.sidebar-hidden {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: minmax(0, 1fr) !important;
+  }
+}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-sprite" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round">
+  <symbol id="i-folder-open" viewBox="0 0 24 24">
+    <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/>
+  </symbol>
+  <symbol id="i-export-sel" viewBox="0 0 24 24">
+    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+    <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+    <path d="m9 15 2 2 4.5-4.5"/>
+  </symbol>
+  <symbol id="i-export-all" viewBox="0 0 24 24">
+    <path d="M20 7h-3a2 2 0 0 1-2-2V2"/>
+    <path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z"/>
+    <path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8"/>
+  </symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24">
+    <path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+    <line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/>
+  </symbol>
+  <symbol id="i-filter-x" viewBox="0 0 24 24">
+    <path d="M13.013 3H2l8 9.46V19l4 2v-8.54l.9-1.055"/>
+    <path d="m22 3-5 5"/><path d="m17 3 5 5"/>
+  </symbol>
+  <symbol id="i-list-checks" viewBox="0 0 24 24">
+    <path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/>
+    <path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/>
+  </symbol>
+  <symbol id="i-list-minus" viewBox="0 0 24 24">
+    <path d="M16 5H3"/><path d="M11 12H3"/><path d="M16 19H3"/><path d="M21 12h-6"/>
+  </symbol>
+  <symbol id="i-eraser" viewBox="0 0 24 24">
+    <path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/>
+    <path d="M22 21H7"/><path d="m5 11 9 9"/>
+  </symbol>
+  <symbol id="i-rotate" viewBox="0 0 24 24">
+    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+    <path d="M3 3v5h5"/>
+  </symbol>
+  <symbol id="i-columns" viewBox="0 0 24 24">
+    <rect width="18" height="18" x="3" y="3" rx="2" fill="none"/>
+    <path d="M9 3v18"/><path d="M15 3v18"/>
+  </symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24">
+    <polyline points="15 3 21 3 21 9"/>
+    <polyline points="9 21 3 21 3 15"/>
+    <line x1="21" x2="14" y1="3" y2="10"/>
+    <line x1="3" x2="10" y1="21" y2="14"/>
+  </symbol>
+  <symbol id="i-x" viewBox="0 0 24 24">
+    <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+  </symbol>
+  <symbol id="i-chevron-up" viewBox="0 0 24 24">
+    <polyline points="18 15 12 9 6 15"/>
+  </symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24">
+    <polyline points="6 9 12 15 18 9"/>
+  </symbol>
+  <symbol id="i-compare" viewBox="0 0 24 24">
+    <circle cx="5" cy="6" r="3"/>
+    <path d="M12 6h5a2 2 0 0 1 2 2v8"/>
+    <circle cx="19" cy="18" r="3"/>
+    <path d="M12 18H7a2 2 0 0 1-2-2V8"/>
+  </symbol>
+  <symbol id="i-panel-left" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" rx="2"/>
+    <path d="M9 3v18"/>
+  </symbol>
+  <symbol id="i-link" viewBox="0 0 24 24">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+  </symbol>
+  <symbol id="i-help" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M9.1 9a3 3 0 1 1 5.4 1.7c-.7.8-1.5 1.2-1.5 2.3"/>
+    <path d="M12 17h.01"/>
+  </symbol>
+</svg>
+<div class="app" id="app">
+  <header class="top">
+    <div class="brand"><img class="brand-logo" src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MTMgMTQ1Ij48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2UwMDt9LmNscy0ye2ZpbGw6I2ZmZjt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPlJlZEhhdC1Mb2dvLUEtUmV2ZXJzZTwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTI3LjQ3LDgzLjQ5YzEyLjUxLDAsMzAuNjEtMi41OCwzMC42MS0xNy40NmExNCwxNCwwLDAsMC0uMzEtMy40MmwtNy40NS0zMi4zNmMtMS43Mi03LjEyLTMuMjMtMTAuMzUtMTUuNzMtMTYuNkMxMjQuODksOC42OSwxMDMuNzYuNSw5Ny41MS41LDkxLjY5LjUsOTAsOCw4My4wNiw4Yy02LjY4LDAtMTEuNjQtNS42LTE3Ljg5LTUuNi02LDAtOS45MSw0LjA5LTEyLjkzLDEyLjUsMCwwLTguNDEsMjMuNzItOS40OSwyNy4xNkE2LjQzLDYuNDMsMCwwLDAsNDIuNTMsNDRjMCw5LjIyLDM2LjMsMzkuNDUsODQuOTQsMzkuNDVNMTYwLDcyLjA3YzEuNzMsOC4xOSwxLjczLDkuMDUsMS43MywxMC4xMywwLDE0LTE1Ljc0LDIxLjc3LTM2LjQzLDIxLjc3Qzc4LjU0LDEwNCwzNy41OCw3Ni42LDM3LjU4LDU4LjQ5YTE4LjQ1LDE4LjQ1LDAsMCwxLDEuNTEtNy4zM0MyMi4yNyw1MiwuNSw1NSwuNSw3NC4yMmMwLDMxLjQ4LDc0LjU5LDcwLjI4LDEzMy42NSw3MC4yOCw0NS4yOCwwLDU2LjctMjAuNDgsNTYuNy0zNi42NSwwLTEyLjcyLTExLTI3LjE2LTMwLjgzLTM1Ljc4Ii8+PHBhdGggZD0iTTE2MCw3Mi4wN2MxLjczLDguMTksMS43Myw5LjA1LDEuNzMsMTAuMTMsMCwxNC0xNS43NCwyMS43Ny0zNi40MywyMS43N0M3OC41NCwxMDQsMzcuNTgsNzYuNiwzNy41OCw1OC40OWExOC40NSwxOC40NSwwLDAsMSwxLjUxLTcuMzNsMy42Ni05LjA2QTYuNDMsNi40MywwLDAsMCw0Mi41Myw0NGMwLDkuMjIsMzYuMywzOS40NSw4NC45NCwzOS40NSwxMi41MSwwLDMwLjYxLTIuNTgsMzAuNjEtMTcuNDZhMTQsMTQsMCwwLDAtLjMxLTMuNDJaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNTc5Ljc0LDkyLjhjMCwxMS44OSw3LjE1LDE3LjY3LDIwLjE5LDE3LjY3YTUyLjExLDUyLjExLDAsMCwwLDExLjg5LTEuNjhWOTVhMjQuODQsMjQuODQsMCwwLDEtNy42OCwxLjE2Yy01LjM3LDAtNy4zNi0xLjY4LTcuMzYtNi43M1Y2OC4zaDE1LjU2VjU0LjFINTk2Ljc4di0xOGwtMTcsMy42OFY1NC4xSDU2OC40OVY2OC4zaDExLjI1Wm0tNTMsLjMyYzAtMy42OCwzLjY5LTUuNDcsOS4yNi01LjQ3YTQzLjEyLDQzLjEyLDAsMCwxLDEwLjEsMS4yNnY3LjE1YTIxLjUxLDIxLjUxLDAsMCwxLTEwLjYzLDIuNjNjLTUuNDYsMC04LjczLTIuMS04LjczLTUuNTdtNS4yLDE3LjU2YzYsMCwxMC44NC0xLjI2LDE1LjM2LTQuMzF2My4zN2gxNi44MlY3NC4wOGMwLTEzLjU2LTkuMTQtMjEtMjQuMzktMjEtOC41MiwwLTE2Ljk0LDItMjYsNi4xbDYuMSwxMi41MmM2LjUyLTIuNzQsMTItNC40MiwxNi44My00LjQyLDcsMCwxMC42MiwyLjczLDEwLjYyLDguMzF2Mi43M2E0OS41Myw0OS41MywwLDAsMC0xMi42Mi0xLjU4Yy0xNC4zMSwwLTIyLjkzLDYtMjIuOTMsMTYuNzMsMCw5Ljc4LDcuNzgsMTcuMjQsMjAuMTksMTcuMjRtLTkyLjQ0LS45NGgxOC4wOVY4MC45MmgzMC4yOXYyOC44Mkg1MDZWMzYuMTJINDg3LjkzVjY0LjQxSDQ1Ny42NFYzNi4xMkg0MzkuNTVaTTM3MC42Miw4MS44N2MwLTgsNi4zMS0xNC4xLDE0LjYyLTE0LjFBMTcuMjIsMTcuMjIsMCwwLDEsMzk3LDcyLjA5VjkxLjU0QTE2LjM2LDE2LjM2LDAsMCwxLDM4NS4yNCw5NmMtOC4yLDAtMTQuNjItNi4xLTE0LjYyLTE0LjA5bTI2LjYxLDI3Ljg3aDE2LjgzVjMyLjQ0bC0xNywzLjY4VjU3LjA1YTI4LjMsMjguMywwLDAsMC0xNC4yLTMuNjhjLTE2LjE5LDAtMjguOTIsMTIuNTEtMjguOTIsMjguNWEyOC4yNSwyOC4yNSwwLDAsMCwyOC40LDI4LjYsMjUuMTIsMjUuMTIsMCwwLDAsMTQuOTMtNC44M1pNMzIwLDY3YzUuMzYsMCw5Ljg4LDMuNDcsMTEuNjcsOC44M0gzMDguNDdDMzEwLjE1LDcwLjMsMzE0LjM2LDY3LDMyMCw2N00yOTEuMzMsODJjMCwxNi4yLDEzLjI1LDI4LjgyLDMwLjI4LDI4LjgyLDkuMzYsMCwxNi4yLTIuNTMsMjMuMjUtOC40MmwtMTEuMjYtMTBjLTIuNjMsMi43NC02LjUyLDQuMjEtMTEuMTQsNC4yMWExNC4zOSwxNC4zOSwwLDAsMS0xMy42OC04LjgzaDM5LjY1VjgzLjU1YzAtMTcuNjctMTEuODgtMzAuMzktMjguMDgtMzAuMzlhMjguNTcsMjguNTcsMCwwLDAtMjksMjguODFNMjYyLDUxLjU4YzYsMCw5LjM2LDMuNzgsOS4zNiw4LjMxUzI2OCw2OC4yLDI2Miw2OC4ySDI0NC4xMVY1MS41OFptLTM2LDU4LjE2aDE4LjA5VjgyLjkyaDEzLjc3bDEzLjg5LDI2LjgySDI5MmwtMTYuMi0yOS40NWEyMi4yNywyMi4yNywwLDAsMCwxMy44OC0yMC43MmMwLTEzLjI1LTEwLjQxLTIzLjQ1LTI2LTIzLjQ1SDIyNloiLz48L3N2Zz4=" alt="Red Hat" width="102" height="24"><span class="brand-title">OpenShift <span>TSR</span> Viewer</span></div>
+    <div class="meta" id="meta"></div>
+    <div class="top-actions">
+      <span class="btn-tip" data-tip="Load JSON">
+        <label class="btn btn-primary btn-icon file-btn" aria-label="Load JSON">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-folder-open"/></svg>
+          <input id="file" type="file" accept=".json,application/json">
+        </label>
+      </span>
+      <span class="export-pair">
+        <span class="btn-tip" data-tip="Export selected JSON">
+          <button class="btn btn-export" id="btnJson" disabled aria-label="Export selected JSON">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-export-sel"/></svg>
+            <span class="fmt">JSON</span>
+            <span class="scope">marked</span>
+          </button>
+        </span>
+        <span class="btn-tip" data-tip="Export selected HTML">
+          <button class="btn btn-export" id="btnHtml" disabled aria-label="Export selected HTML">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-export-sel"/></svg>
+            <span class="fmt">HTML</span>
+            <span class="scope">marked</span>
+          </button>
+        </span>
+      </span>
+      <span class="export-pair">
+        <span class="btn-tip" data-tip="Export all JSON">
+          <button class="btn btn-export" id="btnJsonAll" disabled aria-label="Export all JSON">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-export-all"/></svg>
+            <span class="fmt">JSON</span>
+            <span class="scope">all</span>
+          </button>
+        </span>
+        <span class="btn-tip" data-tip="Export all HTML">
+          <button class="btn btn-export" id="btnHtmlAll" disabled aria-label="Export all HTML">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-export-all"/></svg>
+            <span class="fmt">HTML</span>
+            <span class="scope">all</span>
+          </button>
+        </span>
+      </span>
+      <span class="btn-tip" data-tip="Compare with another JSON">
+        <label class="btn btn-icon file-btn" aria-label="Compare with another JSON">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-compare"/></svg>
+          <input id="fileCompare" type="file" accept=".json,application/json">
+        </label>
+      </span>
+      <span class="export-pair">
+        <span class="btn-tip" data-tip="Export comparison JSON">
+          <button class="btn btn-export" id="btnJsonCmp" disabled aria-label="Export comparison JSON">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-compare"/></svg>
+            <span class="fmt">JSON</span>
+            <span class="scope">diff</span>
+          </button>
+        </span>
+        <span class="btn-tip" data-tip="Export comparison HTML">
+          <button class="btn btn-export" id="btnHtmlCmp" disabled aria-label="Export comparison HTML">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-compare"/></svg>
+            <span class="fmt">HTML</span>
+            <span class="scope">diff</span>
+          </button>
+        </span>
+      </span>
+      <span class="btn-tip" data-tip="Keyboard shortcuts (?)">
+        <button class="btn btn-icon" id="btnHelp" aria-label="Keyboard shortcuts">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-help"/></svg>
+        </button>
+      </span>
+      <span class="btn-tip" data-tip="Remove saved JSON, marks, notes and filters">
+        <button class="btn btn-icon" id="btnForget" aria-label="Forget session">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-trash"/></svg>
+        </button>
+      </span>
+    </div>
+  </header>
+  <div class="main">
+    <aside class="sidebar" id="sidebar">
+      <div class="active-wrap">
+        <h2>Active filters</h2>
+        <div class="active-filters" id="activeFilters"><span class="hint">None. Empty groups mean all.</span></div>
+      </div>
+      <h2>Shortcuts</h2>
+      <div class="row-btns" id="presets"></div>
+      <p class="hint">Empty filters = all. Combine freely. Search uses AND; quotes for a phrase; prefix - to exclude. Press <b>?</b> for keyboard shortcuts. Selected export uses marked rows; the compare pair exports the status diff. The address bar follows the selected check so the same JSON can open that item.</p>
+
+      <h2>Session</h2>
+      <input class="field" id="qSession" placeholder="Filter sessions…">
+      <div class="group" id="fltSession"></div>
+
+      <h2>Check status</h2>
+      <div class="group" id="fltStatus"></div>
+
+      <h2>Inner result status</h2>
+      <p class="hint">Statuses inside the result payload (limitation, inner fail, and so on).</p>
+      <div class="group" id="fltInner"></div>
+
+      <h2>Topic</h2>
+      <input class="field" id="qTopic" placeholder="Topic contains…">
+      <input class="field" id="qTopicPick" placeholder="Search to select topics…">
+      <div class="group tall" id="fltTopic"></div>
+
+      <h2>Subsection</h2>
+      <input class="field" id="qSub" placeholder="Filter subsections…">
+      <div class="group" id="fltSub"></div>
+
+      <h2>Tags</h2>
+      <input class="field" id="qTag" placeholder="Filter tags…">
+      <div class="group" id="fltTags"></div>
+
+      <h2>More</h2>
+      <input class="field" id="qNumber" placeholder="Number starts with (e.g. 4.8)">
+      <input class="field" id="qError" placeholder="error_key contains">
+      <input class="field" id="qComponent" placeholder="component contains">
+      <input class="field" id="qSkip" placeholder="skip reason contains">
+      <select class="field" id="qLinks">
+        <option value="">Links: any</option>
+        <option value="yes">Only with links</option>
+        <option value="no">Only without links</option>
+      </select>
+      <label class="check"><input type="checkbox" id="qInnerFail"> Only if the result has an inner FAIL</label>
+      <label class="check"><input type="checkbox" id="qHideSkipNa"> Hide SKIP and N/A</label>
+      <label class="check"><input type="checkbox" id="qOnlyMarked"> Show marked only</label>
+      <label class="check"><input type="checkbox" id="qOnlyNotes"> Show only checks with notes</label>
+      <select class="field" id="qCompare" disabled title="Load a second JSON to compare status">
+        <option value="">Compare: any</option>
+        <option value="changed">Status changed</option>
+        <option value="worsened">Worsened</option>
+        <option value="improved">Improved</option>
+        <option value="added">New in current</option>
+        <option value="gone">Gone from current</option>
+      </select>
+    </aside>
+    <div class="split split-v" id="splitV" role="separator" aria-orientation="vertical" aria-label="Resize sidebar" tabindex="0" title="Drag to resize. Double-click to restore."></div>
+    <section class="content" id="content">
+      <div class="toolbar">
+        <span class="btn-tip" data-tip="Toggle filters panel">
+          <button class="btn btn-icon" id="btnToggleSidebar" aria-label="Toggle filters panel">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-panel-left"/></svg>
+          </button>
+        </span>
+        <input class="search" id="qSearch" placeholder="Search name, evidence, notes, error_key, tags…  (/)">
+        <select class="btn" id="sortBy" title="Sort checks" aria-label="Sort checks">
+          <option value="session">Sort: session</option>
+          <option value="sev">Sort: severity</option>
+          <option value="number">Sort: number</option>
+          <option value="topic">Sort: topic</option>
+          <option value="status">Sort: status</option>
+        </select>
+        <span class="btn-tip" data-tip="Clear filters">
+          <button class="btn btn-icon" id="btnClear" aria-label="Clear filters">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-filter-x"/></svg>
+          </button>
+        </span>
+        <span class="btn-tip" data-tip="Mark visible">
+          <button class="btn btn-icon" id="btnMarkVisible" disabled aria-label="Mark visible">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-list-checks"/></svg>
+          </button>
+        </span>
+        <span class="btn-tip" data-tip="Unmark visible">
+          <button class="btn btn-icon" id="btnUnmarkVisible" disabled aria-label="Unmark visible">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-list-minus"/></svg>
+          </button>
+        </span>
+        <span class="btn-tip" data-tip="Clear marks">
+          <button class="btn btn-icon" id="btnClearMarks" disabled aria-label="Clear marks">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-eraser"/></svg>
+          </button>
+        </span>
+        <span class="btn-tip" data-tip="Reset panels and column layout">
+          <button class="btn btn-icon" id="btnResetLayout" aria-label="Reset panels">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-rotate"/></svg>
+          </button>
+        </span>
+        <details class="col-picker" id="colPicker">
+          <summary class="btn btn-icon" data-tip="Columns" aria-label="Columns">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-columns"/></svg>
+          </summary>
+          <div class="col-picker-list" id="colPickerList"></div>
+        </details>
+        <span class="muted" id="shown">0 / 0</span>
+        <span class="muted" id="markedCount">0 marked</span>
+        <div class="compare-bar" id="compareBar" hidden></div>
+      </div>
+      <div class="counts" id="counts"></div>
+      <div class="table-wrap" id="tableWrap">
+        <div class="empty" id="empty">
+          <h2>No JSON loaded</h2>
+          <p>Drop a <span class="mono">*.pg.json</span> file onto this window or use <b>Load JSON</b>.</p>
+          <p>The file can be opened from disk (file://). Nothing is sent over the network. Large JSON is cached as the original file blob (not a second in-memory copy). A previous session is restored automatically after reload.</p>
+        </div>
+      </div>
+      <div class="split split-h" id="splitH" role="separator" aria-orientation="horizontal" aria-label="Resize detail panel" tabindex="0" title="Drag to resize. Double-click to restore."></div>
+      <div class="detail" id="detail" hidden></div>
+    </section>
+  </div>
+</div>
+<div class="note-modal" id="noteModal" hidden>
+  <div class="note-modal-backdrop" id="noteModalBackdrop"></div>
+  <div class="note-modal-box" role="dialog" aria-modal="true" aria-labelledby="noteModalTitle">
+    <div class="note-modal-head">
+      <div class="note-modal-copy">
+        <h2 id="noteModalTitle">Notes</h2>
+        <p class="muted" id="noteModalMeta"></p>
+      </div>
+      <button type="button" class="btn btn-icon" id="noteModalClose" aria-label="Close">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-x"/></svg>
+      </button>
+    </div>
+    <textarea class="note note-modal-text" id="noteModalText" placeholder="Observation"></textarea>
+    <div class="note-modal-foot">
+      <button type="button" class="btn btn-primary" id="noteModalDone">Done</button>
+    </div>
+  </div>
+</div>
+<div class="note-modal" id="helpModal" hidden>
+  <div class="note-modal-backdrop" id="helpModalBackdrop"></div>
+  <div class="note-modal-box help-box" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+    <div class="note-modal-head">
+      <div class="note-modal-copy">
+        <h2 id="helpModalTitle">Keyboard shortcuts</h2>
+        <p class="muted">Cmd replaces Ctrl on Mac.</p>
+      </div>
+      <button type="button" class="btn btn-icon" id="helpModalClose" aria-label="Close">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-x"/></svg>
+      </button>
+    </div>
+    <div class="help-body">
+      <table class="help-keys">
+        <tr><th><kbd>?</kbd></th><td>Open or close this list</td></tr>
+        <tr><th><kbd>/</kbd></th><td>Focus the search box</td></tr>
+        <tr><th><kbd>Ctrl</kbd> + <kbd>Down</kbd></th><td>Next visible check</td></tr>
+        <tr><th><kbd>Ctrl</kbd> + <kbd>Up</kbd></th><td>Previous visible check</td></tr>
+        <tr><th><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Down</kbd></th><td>Next marked check</td></tr>
+        <tr><th><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Up</kbd></th><td>Previous marked check</td></tr>
+        <tr><th><kbd>Ctrl</kbd> + <kbd>M</kbd></th><td>Mark or unmark the current check</td></tr>
+        <tr><th><kbd>Esc</kbd></th><td>Close notes or this list</td></tr>
+        <tr><th>Address bar</th><td>The selected check is in the URL (<span class="mono">#c=…</span>). Open the same JSON to land on that item.</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const app = $("app");
+  let original = null;
+  let sourceBlob = null;
+  let checks = [];
+  let filtered = [];
+  let selectedId = null;
+  let noteModalId = null;
+  let failHitIndex = 0;
+  let detailQuery = "";
+  let detailFindIndex = 0;
+  let detailFindTimer = null;
+  let sourceName = "phased-gates.json";
+  const marked = new Set();
+  const notes = Object.create(null);
+  let compareState = null;
+  let applyingHash = false;
+  const NOTES_FIELD = "acarlos-tsr-viewer-notes";
+  const MARKED_FIELD = "acarlos-tsr-viewer-marked";
+  const filterSets = {};
+  let engineFilter = "";
+  const ENGINE_LABEL = { ccx_rules_ocp: "CCX OCP", phased_gates: "Phased Gates" };
+  let restoring = false;
+  let persistTimer = null;
+  const UI_KEY = "tsr-viewer-ui-v1";
+  const LAYOUT_KEY = "tsr-viewer-layout-v1";
+  const LAYOUT_DEFAULT = { sidebarW: 320, sidebarH: 0.4, detailH: 0.42 };
+  const COL_IDS = ["status", "number", "source", "session", "topic", "key", "tags", "notes"];
+  const COL_META = {
+    status: { label: "Status" },
+    number: { label: "Number", head: "#" },
+    source: { label: "Source" },
+    session: { label: "Session" },
+    topic: { label: "Topic" },
+    key: { label: "Key / error_key" },
+    tags: { label: "Tags" },
+    notes: { label: "Notes", thClass: "col-note", tdClass: "col-note" }
+  };
+  const COL_DEFAULTS = {
+    status: 108, number: 52, source: 110, session: 150,
+    topic: 220, key: 200, tags: 140, notes: 220
+  };
+  const COL_MIN = {
+    status: 56, number: 36, source: 64, session: 72,
+    topic: 80, key: 80, tags: 64, notes: 120
+  };
+  const COL_MAX = 2000;
+  const COL_MARK_W = 34;
+  const COL_LINK_W = 28;
+  const COL_VISIBLE_DEFAULT = {
+    status: true, number: true, source: false, session: true,
+    topic: true, key: true, tags: true, notes: true
+  };
+  function sanitizeColWidths(raw) {
+    const out = Object.assign({}, COL_DEFAULTS);
+    if (!raw || typeof raw !== "object") return out;
+    COL_IDS.forEach((id) => {
+      const n = Number(raw[id]);
+      if (Number.isFinite(n)) out[id] = Math.max(COL_MIN[id], Math.min(COL_MAX, Math.round(n)));
+    });
+    return out;
+  }
+  function sanitizeColVisible(raw) {
+    const out = Object.assign({}, COL_VISIBLE_DEFAULT);
+    if (raw && typeof raw === "object") {
+      COL_IDS.forEach((id) => {
+        if (Object.prototype.hasOwnProperty.call(raw, id)) out[id] = raw[id] !== false;
+      });
+    }
+    if (!COL_IDS.some((id) => out[id])) Object.assign(out, COL_VISIBLE_DEFAULT);
+    return out;
+  }
+  function loadLayout() {
+    let parsed = {};
+    try { parsed = JSON.parse(localStorage.getItem(LAYOUT_KEY) || "{}") || {}; }
+    catch (_) { parsed = {}; }
+    const migrated = (Number(parsed.colRev) || 0) < 2;
+    const colVisible = sanitizeColVisible(parsed.colVisible);
+    if (migrated) colVisible.source = false;
+    const next = {
+      ...LAYOUT_DEFAULT,
+      ...parsed,
+      cols: sanitizeColWidths(parsed.cols),
+      colVisible,
+      colRev: 2
+    };
+    if (migrated) {
+      try { localStorage.setItem(LAYOUT_KEY, JSON.stringify(next)); } catch (_) {}
+    }
+    return next;
+  }
+  function saveLayout(l) {
+    try { localStorage.setItem(LAYOUT_KEY, JSON.stringify(l)); } catch (_) {}
+  }
+  let layout = loadLayout();
+  const IDB_NAME = "tsr-viewer";
+  const IDB_STORE = "kv";
+  const FILTER_GROUP_IDS = ["fltSession", "fltStatus", "fltInner", "fltTopic", "fltSub", "fltTags"];
+  const FILTER_TEXT_IDS = ["qSearch", "qTopic", "qNumber", "qError", "qComponent", "qSkip", "qSession", "qTopicPick", "qSub", "qTag"];
+  let idbPromise = null;
+  function getSet(id) {
+    if (!filterSets[id]) filterSets[id] = new Set();
+    return filterSets[id];
+  }
+  function idbOpen() {
+    if (!window.indexedDB) return Promise.reject(new Error("IndexedDB is not available"));
+    if (idbPromise) return idbPromise;
+    idbPromise = new Promise((resolve, reject) => {
+      const req = indexedDB.open(IDB_NAME, 2);
+      req.onupgradeneeded = () => {
+        if (!req.result.objectStoreNames.contains(IDB_STORE)) req.result.createObjectStore(IDB_STORE);
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => { idbPromise = null; reject(req.error); };
+    });
+    return idbPromise;
+  }
+  function idbGet(key) {
+    return idbOpen().then((db) => new Promise((resolve, reject) => {
+      const r = db.transaction(IDB_STORE, "readonly").objectStore(IDB_STORE).get(key);
+      r.onsuccess = () => resolve(r.result);
+      r.onerror = () => reject(r.error);
+    }));
+  }
+  function idbSet(key, value) {
+    return idbOpen().then((db) => new Promise((resolve, reject) => {
+      const tx = db.transaction(IDB_STORE, "readwrite");
+      tx.objectStore(IDB_STORE).put(value, key);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    }));
+  }
+  function idbDel(key) {
+    return idbOpen().then((db) => new Promise((resolve, reject) => {
+      const tx = db.transaction(IDB_STORE, "readwrite");
+      tx.objectStore(IDB_STORE).delete(key);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    })).catch(() => {});
+  }
+  function collectUiState() {
+    const groups = {};
+    FILTER_GROUP_IDS.forEach((id) => { groups[id] = [...getSet(id)]; });
+    const fields = {};
+    FILTER_TEXT_IDS.forEach((id) => { fields[id] = $(id).value; });
+    return {
+      sourceName,
+      selectedId,
+      marked: [...marked],
+      notes: Object.fromEntries(Object.entries(notes).filter(([, v]) => String(v).trim())),
+      groups,
+      fields,
+      qLinks: $("qLinks").value,
+      qInnerFail: $("qInnerFail").checked,
+      qHideSkipNa: $("qHideSkipNa").checked,
+      qOnlyMarked: $("qOnlyMarked").checked,
+      qOnlyNotes: $("qOnlyNotes").checked,
+      engineFilter,
+      sortBy: $("sortBy").value
+    };
+  }
+  function persistUi(immediate) {
+    if (restoring) return;
+    const save = () => {
+      try { localStorage.setItem(UI_KEY, JSON.stringify(collectUiState())); }
+      catch (_) { /* quota */ }
+    };
+    clearTimeout(persistTimer);
+    if (immediate) save();
+    else persistTimer = setTimeout(save, 250);
+  }
+  function formatBytes(n) {
+    n = Number(n) || 0;
+    if (n < 1024) return n + " B";
+    if (n < 1048576) return (n / 1024).toFixed(1) + " KB";
+    if (n < 1073741824) return (n / 1048576).toFixed(1) + " MB";
+    return (n / 1073741824).toFixed(2) + " GB";
+  }
+  function formatGeneratedAt(iso) {
+    if (!iso) return "";
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return String(iso);
+    try {
+      return new Intl.DateTimeFormat("en", {
+        year: "numeric", month: "short", day: "2-digit",
+        hour: "2-digit", minute: "2-digit", timeZoneName: "short"
+      }).format(d);
+    } catch (_) {
+      return String(iso);
+    }
+  }
+  function findCollectionTime(obj) {
+    const keys = /^(collection_time|collected_at|gather_time|collectionTime)$/;
+    let best = null;
+    let bestMs = Infinity;
+    let n = 0;
+    function consider(v) {
+      if (typeof v !== "string" || !v) return;
+      const d = new Date(v);
+      if (Number.isNaN(d.getTime())) return;
+      if (d.getTime() < bestMs) {
+        bestMs = d.getTime();
+        best = v;
+      }
+    }
+    function walkTime(x, depth) {
+      if (!x || n > 500000 || depth > 20) return;
+      if (Array.isArray(x)) {
+        const max = Math.min(x.length, 400);
+        for (let i = 0; i < max; i++) {
+          n++;
+          walkTime(x[i], depth + 1);
+        }
+        return;
+      }
+      if (typeof x !== "object") return;
+      n++;
+      for (const [k, v] of Object.entries(x)) {
+        if (keys.test(k)) consider(v);
+        else if (v && typeof v === "object") walkTime(v, depth + 1);
+      }
+    }
+    walkTime(obj, 0);
+    return best;
+  }
+  function hasUnsavedWork() {
+    if (marked.size) return true;
+    return Object.keys(notes).some((k) => String(notes[k] || "").trim());
+  }
+  function confirmReplaceDocument() {
+    if (!original || restoring) return true;
+    if (!hasUnsavedWork()) return true;
+    return confirm("This session has marked checks or notes. Load another JSON and replace the current document?");
+  }
+  function typingInField() {
+    const el = document.activeElement;
+    if (!el) return false;
+    const tag = el.tagName;
+    return tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || el.isContentEditable;
+  }
+  function yieldUi() {
+    return new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)));
+  }
+  function persistDocument() {
+    if (restoring || !sourceBlob) return;
+    idbSet("document", {
+      name: sourceName,
+      blob: sourceBlob,
+      size: sourceBlob.size,
+      savedAt: Date.now()
+    }).catch((e) => {
+      console.warn("Could not save JSON locally:", e);
+      alert("The JSON is too large to cache in this browser (quota). Marks and filters will still be saved, but the file will need to be loaded again after reload.");
+    });
+  }
+  function applyUiState(ui) {
+    if (!ui) return;
+    restoring = true;
+    FILTER_TEXT_IDS.forEach((id) => { if (ui.fields && ui.fields[id] != null) $(id).value = ui.fields[id]; });
+    $("qLinks").value = ui.qLinks || "";
+    $("qInnerFail").checked = !!ui.qInnerFail;
+    $("qHideSkipNa").checked = !!ui.qHideSkipNa;
+    $("qOnlyMarked").checked = !!ui.qOnlyMarked;
+    $("qOnlyNotes").checked = !!ui.qOnlyNotes;
+    engineFilter = ENGINE_LABEL[ui.engineFilter] ? ui.engineFilter : "";
+    if (ui.sortBy) $("sortBy").value = ui.sortBy;
+    FILTER_GROUP_IDS.forEach((id) => setGroup(id, (ui.groups && ui.groups[id]) || []));
+    marked.clear();
+    const valid = new Set(checks.map((c) => c.id));
+    (ui.marked || []).forEach((id) => { if (valid.has(id)) marked.add(id); });
+    if (Object.prototype.hasOwnProperty.call(ui, "notes") && ui.notes && typeof ui.notes === "object") {
+      clearNotes();
+      Object.entries(ui.notes).forEach(([id, v]) => {
+        if (valid.has(id) && v != null && String(v).trim()) notes[id] = String(v);
+      });
+    }
+    selectedId = ui.selectedId && valid.has(ui.selectedId) ? ui.selectedId : null;
+    refilterGroupQuiet("fltSession", "qSession");
+    refilterGroupQuiet("fltTopic", "qTopicPick");
+    refilterGroupQuiet("fltSub", "qSub");
+    refilterGroupQuiet("fltTags", "qTag");
+    restoring = false;
+  }
+  function refilterGroupQuiet(boxId, searchId) {
+    const el = $(boxId);
+    if (!el || !el.dataset.values) return;
+    const arr = JSON.parse(el.dataset.values || "[]");
+    renderChecks(el, arr, boxId, searchId);
+  }
+  async function restoreSession() {
+    let ui = null;
+    try { ui = JSON.parse(localStorage.getItem(UI_KEY) || "null"); } catch (_) { ui = null; }
+    let doc = null;
+    try { doc = await idbGet("document"); } catch (_) { doc = null; }
+    if (!doc) return;
+    const blob = doc.blob instanceof Blob ? doc.blob : null;
+    $("meta").textContent = blob
+      ? `Restoring previous session (${formatBytes(blob.size || doc.size)})…`
+      : "Restoring previous session…";
+    await yieldUi();
+    try {
+      let obj = null;
+      if (blob) {
+        const text = await blob.text();
+        $("meta").textContent = "Parsing saved JSON…";
+        await yieldUi();
+        obj = JSON.parse(text);
+      } else if (doc.data && typeof doc.data === "object") {
+        obj = doc.data;
+      }
+      if (!obj) return;
+      ingest(obj, doc.name || (ui && ui.sourceName) || sourceName, { restore: true, ui, blob });
+    } catch (e) {
+      console.warn("Could not restore saved JSON:", e);
+      $("meta").textContent = "Could not restore the saved JSON. Load the file again.";
+    }
+  }
+  async function forgetSession() {
+    if (!confirm("Remove the saved JSON, marked items, notes and filters from this browser?")) return;
+    try { localStorage.removeItem(UI_KEY); } catch (_) {}
+    await idbDel("document");
+    location.reload();
+  }
+
+  const SEV = {
+    fail: 0, warning: 1, limitation: 1, "potential limitation": 1,
+    "support limitation": 1, "potential support limitation": 1,
+    info: 2, pass: 3, skip_with_content: 4, skip: 5, na: 6
+  };
+  const STATUS_LABEL = {
+    fail: "FAIL", warning: "WARNING", pass: "PASS", info: "INFO",
+    skip: "SKIP", skip_with_content: "SKIP+", na: "NOT APPLICABLE",
+    limitation: "LIMITATION", "potential limitation": "POTENTIAL LIMITATION",
+    "support limitation": "SUPPORT LIMITATION",
+    "potential support limitation": "POTENTIAL SUPPORT LIMITATION",
+    "not applicable": "NOT APPLICABLE", "3rd party support": "3RD PARTY"
+  };
+  const PG_SESSION = {
+    1: "1. Basic Checks",
+    2: "2. Topology Checks",
+    3: "3. Component Checks",
+    4: "4. Layered Products",
+    5: "5. Cluster Health",
+    6: "6. Day-2 Operations",
+    7: "7. Security And Compliance"
+  };
+  const WALK_SKIP = new Set(["node_metadata", "content", "result", "tags", "component", "component_key", NOTES_FIELD, MARKED_FIELD]);
+
+  function escapeHtml(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+  function normalizeStatus(rt) {
+    if (rt == null || rt === "") return "none";
+    const s = String(rt).toLowerCase().trim();
+    if (s === "na" || s === "n/a" || s === "not applicable") return "na";
+    return s;
+  }
+  function isIssueStatus(rt) {
+    const n = normalizeStatus(rt);
+    return n === "fail" || n === "warning" || n.includes("limitation");
+  }
+  function issueKindLabel(n) {
+    n = normalizeStatus(n);
+    if (n === "fail") return "FAIL";
+    if (n === "warning") return "WARN";
+    if (n.includes("limitation")) return "LIMITATION";
+    return "ISSUE";
+  }
+  function statusLabel(rt) {
+    const n = normalizeStatus(rt);
+    return STATUS_LABEL[n] || String(rt || "").toUpperCase();
+  }
+  function badge(rt) {
+    const n = normalizeStatus(rt);
+    const cls = "b-" + n.replace(/\s+/g, "-");
+    return `<span class="badge ${cls}">${escapeHtml(statusLabel(n))}</span>`;
+  }
+  function collectLinks(content) {
+    const out = [];
+    if (!content || typeof content !== "object") return out;
+    const links = content.links;
+    if (!links || typeof links !== "object") return out;
+    for (const [k, arr] of Object.entries(links)) {
+      (Array.isArray(arr) ? arr : [arr]).forEach((u) => {
+        if (u) out.push({ group: k, url: String(u) });
+      });
+    }
+    return out;
+  }
+  function haystackOf(c) {
+    return c._hay;
+  }
+  function flattenText(v, acc, n) {
+    if (n > 6 || v == null) return;
+    if (typeof v === "string") {
+      acc.push(v.length > 400 ? v.slice(0, 400) : v);
+      return;
+    }
+    if (typeof v === "number" || typeof v === "boolean") {
+      acc.push(String(v));
+      return;
+    }
+    if (Array.isArray(v)) {
+      const max = Math.min(v.length, 80);
+      for (let i = 0; i < max; i++) flattenText(v[i], acc, n + 1);
+      return;
+    }
+    if (typeof v === "object") {
+      const vals = Object.values(v);
+      const max = Math.min(vals.length, 80);
+      for (let i = 0; i < max; i++) flattenText(vals[i], acc, n + 1);
+    }
+  }
+  function isLeaf(node) {
+    if (!node || typeof node !== "object" || Array.isArray(node)) return false;
+    const meta = node.node_metadata;
+    if (meta && meta.is_directory) return false;
+    if (meta && meta.is_directory === false) return true;
+    return !!(meta && (node.component || node.result || meta.response_type));
+  }
+  function deriveSession(engine, component, dirStack) {
+    const c = component || "";
+    if (engine === "phased_gates") {
+      const m = c.match(/\.checks_([1-7])_/);
+      if (m) return PG_SESSION[m[1]];
+      if (c.includes("data_capture_timestamps")) return "Data Capture Timestamps";
+      if (c.includes("check_mg_collection") || c.includes("must_gather_collection")) return "Must Gather Collection";
+    } else {
+      if (c.includes(".networking.")) return "Networking";
+      if (c.includes(".ocs.")) return "Ocs";
+      if (c.includes(".security.")) return "Security";
+      if (c.includes(".shift.")) return "Shift";
+      if (c.includes(".storage.")) return "Storage";
+      if (c.includes(".external.rules.") || c.includes(".internal.rules.")) return "Rules";
+      const m = c.match(/ccx_rules_ocp\.(?:internal|external)\.([^.]+)/);
+      if (m) {
+        const map = { rules: "Rules", ocs: "Ocs", networking: "Networking", security: "Security", shift: "Shift", storage: "Storage" };
+        if (map[m[1]]) return map[m[1]];
+        return m[1].replace(/_/g, " ").replace(/\b\w/g, (ch) => ch.toUpperCase());
+      }
+    }
+    const named = (dirStack || []).filter((x) => x && !["CCX Rules OCP", "Phased Gates", "Must Gather", "External", "Internal", "Skips"].includes(x));
+    return named[0] || "Other";
+  }
+  function deriveSource(engine, path, inSkips) {
+    if (inSkips) return engine === "phased_gates" ? "PG Skips" : "CCX Skips";
+    if (engine === "phased_gates") return "Phased Gates";
+    if (path.includes("external")) return "CCX External";
+    if (path.includes("internal")) return "CCX Internal";
+    return "CCX";
+  }
+  function innerStatuses(result) {
+    const set = new Set();
+    const walk = (x, d) => {
+      if (!x || d > 10) return;
+      if (Array.isArray(x)) { x.forEach((i) => walk(i, d + 1)); return; }
+      if (typeof x === "object") {
+        if (x.response_type) set.add(normalizeStatus(x.response_type));
+        Object.values(x).forEach((v) => walk(v, d + 1));
+      }
+    };
+    walk(result, 0);
+    set.delete("none");
+    return set;
+  }
+  function indexLeaf(node, path, ctx) {
+    const meta = node.node_metadata || {};
+    const engine = path.includes("phased_gates") ? "phased_gates" : "ccx_rules_ocp";
+    const component = node.component || "";
+    const result = node.result;
+    const inner = innerStatuses(result);
+    const errorKey = result && typeof result === "object" && !Array.isArray(result) ? (result.error_key || null) : null;
+    const skipReason = result && typeof result === "object" && !Array.isArray(result) ? (result.reason || null) : null;
+    const links = collectLinks(node.content);
+    const tags = Array.isArray(node.tags) ? node.tags : [];
+    const session = deriveSession(engine, component, ctx.dirStack);
+    const subsection = (ctx.dirStack || []).filter((x) => x && x !== session).slice(-1)[0] || "";
+    const topic = meta.name || meta.key || path[path.length - 1];
+    const id = path.join("\x1f");
+    const leafNote = typeof node[NOTES_FIELD] === "string" ? node[NOTES_FIELD] : "";
+    if (leafNote.trim()) notes[id] = leafNote;
+    const acc = [];
+    flattenText({ topic, key: meta.key, number: meta.number, component, errorKey, skipReason, tags, session, result, content: node.content, note: leafNote }, acc, 0);
+    const rec = {
+      id,
+      path,
+      engine,
+      source: deriveSource(engine, path, ctx.inSkips),
+      session,
+      subsection,
+      topic,
+      key: meta.key || path[path.length - 1],
+      number: meta.number || "",
+      status: normalizeStatus(meta.response_type),
+      tags,
+      errorKey,
+      skipReason,
+      inner: [...inner],
+      hasInnerFail: inner.has("fail"),
+      links,
+      component,
+      result,
+      content: node.content || {},
+      _hay: acc.join("\n").toLowerCase()
+    };
+    return rec;
+  }
+  function walk(node, path, ctx) {
+    if (!node || typeof node !== "object" || Array.isArray(node)) return;
+    if (isLeaf(node)) {
+      checks.push(indexLeaf(node, path, ctx));
+      return;
+    }
+    const meta = node.node_metadata;
+    const next = {
+      dirStack: ctx.dirStack ? ctx.dirStack.slice() : [],
+      inSkips: ctx.inSkips || path[path.length - 1] === "skips"
+    };
+    if (meta && meta.is_directory && meta.name) next.dirStack.push(meta.name);
+    for (const [k, v] of Object.entries(node)) {
+      if (WALK_SKIP.has(k)) continue;
+      walk(v, path.concat(k), next);
+    }
+  }
+  function collectLeafStatuses(obj) {
+    const leaves = [];
+    function walkNode(node, path, ctx) {
+      if (!node || typeof node !== "object" || Array.isArray(node)) return;
+      if (isLeaf(node)) {
+        const meta = node.node_metadata || {};
+        leaves.push({
+          id: path.join("\x1f"),
+          path: path.join("/"),
+          component: node.component || "",
+          key: meta.key || "",
+          topic: meta.name || meta.key || path[path.length - 1] || "",
+          number: meta.number || "",
+          engine: path.includes("phased_gates") ? "phased_gates" : "ccx_rules_ocp",
+          inSkips: !!(ctx && ctx.inSkips),
+          dirStack: (ctx && ctx.dirStack) ? ctx.dirStack.slice() : [],
+          status: normalizeStatus(meta.response_type)
+        });
+        return;
+      }
+      const meta = node.node_metadata;
+      const next = {
+        dirStack: ctx.dirStack ? ctx.dirStack.slice() : [],
+        inSkips: ctx.inSkips || path[path.length - 1] === "skips"
+      };
+      if (meta && meta.is_directory && meta.name) next.dirStack.push(meta.name);
+      for (const [k, v] of Object.entries(node)) {
+        if (WALK_SKIP.has(k)) continue;
+        walkNode(v, path.concat(k), next);
+      }
+    }
+    for (const [k, tree] of Object.entries(obj.rule_sets || {})) {
+      walkNode(tree, ["rule_sets", k], { dirStack: [], inSkips: false });
+    }
+    const byId = new Map();
+    const byPath = new Map();
+    const byComp = new Map();
+    const byKey = new Map();
+    for (const rec of leaves) {
+      byId.set(rec.id, rec);
+      byPath.set(rec.path, rec);
+      if (rec.component) byComp.set(rec.component, rec);
+      if (rec.key) byKey.set(rec.key, rec);
+    }
+    return { leaves, byId, byPath, byComp, byKey };
+  }
+  function lookupCompare(c) {
+    if (!compareState) return null;
+    const idx = compareState.index;
+    return idx.byId.get(c.id)
+      || idx.byPath.get((c.path || []).join("/"))
+      || (c.component && idx.byComp.get(c.component))
+      || (c.key && idx.byKey.get(c.key))
+      || null;
+  }
+  function compareKind(c) {
+    if (!compareState) return "";
+    if (c && c.gone) return "gone";
+    const other = lookupCompare(c);
+    if (!other) return "added";
+    if (other.status === c.status) return "same";
+    const sa = SEV[c.status] ?? 9;
+    const sb = SEV[other.status] ?? 9;
+    if (sa < sb) return "worsened";
+    if (sa > sb) return "improved";
+    return "changed";
+  }
+  function goneLeaves() {
+    if (!compareState) return [];
+    const matched = new Set();
+    for (const c of checks) {
+      const o = lookupCompare(c);
+      if (o) matched.add(o);
+    }
+    return compareState.index.leaves.filter((l) => !matched.has(l));
+  }
+  function goneCheck(leaf) {
+    const pathArr = String(leaf.path || "").split("/");
+    const engine = leaf.engine || (pathArr.includes("phased_gates") ? "phased_gates" : "ccx_rules_ocp");
+    const session = deriveSession(engine, leaf.component, leaf.dirStack);
+    const subsection = (leaf.dirStack || []).filter((x) => x && x !== session).slice(-1)[0] || "";
+    const topic = leaf.topic || leaf.key || pathArr[pathArr.length - 1] || "Unknown";
+    return {
+      id: leaf.id,
+      path: pathArr,
+      gone: true,
+      engine,
+      source: deriveSource(engine, pathArr, leaf.inSkips),
+      session,
+      subsection,
+      topic,
+      key: leaf.key || "",
+      number: leaf.number || "",
+      status: leaf.status,
+      tags: [],
+      errorKey: null,
+      skipReason: null,
+      inner: [],
+      hasInnerFail: false,
+      links: [],
+      component: leaf.component || "",
+      result: null,
+      content: {},
+      _hay: [topic, leaf.key, leaf.number, session, leaf.path, leaf.status].join("\n").toLowerCase()
+    };
+  }
+  function findCheck(id) {
+    if (!id) return null;
+    const inChecks = checks.find((c) => c.id === id);
+    if (inChecks) return inChecks;
+    const inFiltered = filtered.find((c) => c.id === id);
+    if (inFiltered) return inFiltered;
+    if (compareState) {
+      const leaf = goneLeaves().find((l) => l.id === id);
+      if (leaf) return goneCheck(leaf);
+    }
+    return null;
+  }
+  function checkPathOf(c) {
+    if (!c) return "";
+    if (Array.isArray(c.path)) return c.path.join("/");
+    return String(c.path || "");
+  }
+  function safeDecode(s) {
+    try { return decodeURIComponent(s); } catch (_) { return s; }
+  }
+  function parseHash() {
+    const raw = (location.hash || "").replace(/^#/, "");
+    if (!raw) return { kind: "", token: "" };
+    const eq = raw.indexOf("=");
+    if (eq > 0 && eq <= 2) {
+      return { kind: raw.slice(0, eq), token: safeDecode(raw.slice(eq + 1)) };
+    }
+    return { kind: "c", token: safeDecode(raw) };
+  }
+  function idFromHash() {
+    const { kind, token } = parseHash();
+    if (!token) return null;
+    if (kind === "n" || (kind !== "c" && /^\d+(\.\d+)*$/.test(token))) {
+      const hits = checks.filter((c) => (c.number || "") === token);
+      if (hits.length === 1) return hits[0].id;
+    }
+    const byPath = checks.find((c) => checkPathOf(c) === token);
+    if (byPath) return byPath.id;
+    const byId = checks.find((c) => c.id === token);
+    if (byId) return byId.id;
+    if (compareState) {
+      const leaf = compareState.index.byPath.get(token)
+        || compareState.index.leaves.find((l) => l.path === token || l.id === token);
+      if (leaf && goneLeaves().some((l) => l.id === leaf.id)) return leaf.id;
+    }
+    return null;
+  }
+  function writeCheckHash(id) {
+    if (applyingHash) return;
+    const c = findCheck(id);
+    if (!c) return;
+    const num = (c.number || "").trim();
+    const uniqueNum = num && !c.gone && checks.filter((x) => x.number === num).length === 1;
+    const token = uniqueNum
+      ? "n=" + encodeURIComponent(num)
+      : "c=" + encodeURIComponent(checkPathOf(c));
+    const h = "#" + token;
+    if (location.hash === h) return;
+    try {
+      history.replaceState(null, "", location.pathname + location.search + h);
+    } catch (_) {
+      try { location.hash = token; } catch (__) {}
+    }
+  }
+  function applyCheckHash() {
+    if (!checks.length) return false;
+    const id = idFromHash();
+    if (!id) return false;
+    let c = findCheck(id);
+    if (c && c.gone && $("qCompare") && $("qCompare").value !== "gone") {
+      $("qCompare").value = "gone";
+      applyingHash = true;
+      applyFilters();
+      applyingHash = false;
+      c = findCheck(id);
+    }
+    if (!c) return false;
+    applyingHash = true;
+    selectRow(id, false);
+    applyingHash = false;
+    requestAnimationFrame(() => scrollRowIntoView(id, "center"));
+    return true;
+  }
+  function summarizeCompare() {
+    if (!compareState) return null;
+    let changed = 0, improved = 0, worsened = 0, added = 0;
+    const matched = new Set();
+    for (const c of checks) {
+      const k = compareKind(c);
+      const o = lookupCompare(c);
+      if (o) matched.add(o);
+      if (k === "added") added++;
+      else if (k === "worsened") { worsened++; changed++; }
+      else if (k === "improved") { improved++; changed++; }
+      else if (k === "changed") changed++;
+    }
+    const gone = compareState.index.leaves.filter((l) => !matched.has(l)).length;
+    return { changed, improved, worsened, added, gone };
+  }
+  function renderCompareBar() {
+    const el = $("compareBar");
+    const sel = $("qCompare");
+    const jsonBtn = $("btnJsonCmp");
+    const htmlBtn = $("btnHtmlCmp");
+    if (jsonBtn) jsonBtn.disabled = !compareState;
+    if (htmlBtn) htmlBtn.disabled = !compareState;
+    if (!el) return;
+    if (!compareState) {
+      el.hidden = true;
+      el.innerHTML = "";
+      if (sel) {
+        sel.value = "";
+        sel.disabled = true;
+      }
+      return;
+    }
+    if (sel) sel.disabled = false;
+    const s = compareState.summary || { changed: 0, improved: 0, worsened: 0, added: 0, gone: 0 };
+    const cur = sel ? sel.value : "";
+    el.hidden = false;
+    el.innerHTML = `<span>Compared with <b>${escapeHtml(compareState.name)}</b></span>
+      <button type="button" class="cmp-stat${cur === "changed" ? " is-on" : ""}" data-cmp="changed">${s.changed} changed</button>
+      <button type="button" class="cmp-stat improved${cur === "improved" ? " is-on" : ""}" data-cmp="improved">${s.improved} improved</button>
+      <button type="button" class="cmp-stat worsened${cur === "worsened" ? " is-on" : ""}" data-cmp="worsened">${s.worsened} worsened</button>
+      <button type="button" class="cmp-stat added${cur === "added" ? " is-on" : ""}" data-cmp="added">${s.added} new</button>
+      <button type="button" class="cmp-stat gone${cur === "gone" ? " is-on" : ""}" data-cmp="gone">${s.gone} gone</button>
+      <button type="button" class="btn" id="btnCompareClear">Clear compare</button>`;
+    el.querySelectorAll("[data-cmp]").forEach((btn) => {
+      btn.onclick = () => {
+        if (!sel) return;
+        sel.value = sel.value === btn.dataset.cmp ? "" : btn.dataset.cmp;
+        applyFilters();
+      };
+    });
+    $("btnCompareClear").onclick = clearCompare;
+  }
+  function refreshCompare() {
+    if (compareState) compareState.summary = summarizeCompare();
+    renderCompareBar();
+  }
+  function clearCompare() {
+    compareState = null;
+    if ($("fileCompare")) $("fileCompare").value = "";
+    renderCompareBar();
+    applyFilters();
+  }
+  async function loadCompareFile(file) {
+    if (!original) {
+      alert("Load a JSON first, then compare it with another file.");
+      return;
+    }
+    try {
+      const text = await file.text();
+      const obj = JSON.parse(text);
+      if (!obj || typeof obj !== "object" || !obj.rule_sets) {
+        alert("Invalid JSON: expected the Insights format with rule_sets (.pg.json file).");
+        return;
+      }
+      compareState = { name: file.name, index: collectLeafStatuses(obj), summary: null };
+      refreshCompare();
+      applyFilters();
+      applyCheckHash();
+    } catch (e) {
+      alert("Failed to read compare JSON: " + e.message);
+    }
+  }
+
+  function parseQuery(q) {
+    const terms = [];
+    const re = /([+-])?(?:"([^"]+)"|(\S+))/g;
+    let m;
+    while ((m = re.exec(q || ""))) {
+      const neg = m[1] === "-";
+      const word = (m[2] || m[3] || "").toLowerCase();
+      if (word) terms.push({ neg, word });
+    }
+    return terms;
+  }
+  function matchQuery(hay, terms) {
+    for (const t of terms) {
+      const hit = hay.includes(t.word);
+      if (t.neg ? hit : !hit) return false;
+    }
+    return true;
+  }
+  function searchHitTerms() {
+    return parseQuery($("qSearch") ? $("qSearch").value : "")
+      .filter((t) => !t.neg && t.word)
+      .map((t) => t.word)
+      .sort((a, b) => b.length - a.length);
+  }
+  function escapeRe(s) {
+    return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+  function highlightHtml(html) {
+    const linked = linkifyKcs(html == null ? "" : String(html));
+    const terms = searchHitTerms();
+    if (!terms.length) return linked;
+    let re;
+    try {
+      re = new RegExp("(" + terms.map(escapeRe).join("|") + ")", "gi");
+    } catch (_) {
+      return linked;
+    }
+    return linked.split(/(<[^>]+>)/).map((part, i) => {
+      if (i % 2) return part;
+      return part.replace(re, `<mark class="hit">$1</mark>`);
+    }).join("");
+  }
+  function highlightPlain(text) {
+    return highlightHtml(linkify(text == null ? "" : text, false));
+  }
+  function checkedValues(containerId) {
+    return [...getSet(containerId)];
+  }
+  function uniqueSorted(arr) {
+    return [...new Set(arr.filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b), "en"));
+  }
+
+  function applyFilters() {
+    if (!checks.length) { filtered = []; renderTable(); updateMarkChrome(); renderActiveFilters(); persistUi(); return; }
+    const terms = parseQuery($("qSearch").value);
+    const session = checkedValues("fltSession");
+    const status = checkedValues("fltStatus");
+    const inner = checkedValues("fltInner");
+    const topics = checkedValues("fltTopic");
+    const subs = checkedValues("fltSub");
+    const tags = checkedValues("fltTags");
+    const qTopic = $("qTopic").value.trim().toLowerCase();
+    const qNumber = $("qNumber").value.trim();
+    const qError = $("qError").value.trim().toLowerCase();
+    const qComp = $("qComponent").value.trim().toLowerCase();
+    const qSkip = $("qSkip").value.trim().toLowerCase();
+    const qLinks = $("qLinks").value;
+    const innerFail = $("qInnerFail").checked;
+    const hideSkipNa = $("qHideSkipNa").checked;
+    const onlyMarked = $("qOnlyMarked").checked;
+    const onlyNotes = $("qOnlyNotes").checked;
+    const qCompare = $("qCompare").value;
+    const pool = (qCompare === "gone") ? goneLeaves().map(goneCheck) : checks;
+
+    filtered = pool.filter((c) => {
+      if (onlyMarked && !marked.has(c.id)) return false;
+      if (onlyNotes && !(notes[c.id] || "").trim()) return false;
+      if (qCompare && qCompare !== "gone") {
+        const k = compareKind(c);
+        if (qCompare === "changed") {
+          if (k === "same" || k === "added" || !k) return false;
+        } else if (k !== qCompare) return false;
+      }
+      if (hideSkipNa && (c.status === "skip" || c.status === "skip_with_content" || c.status === "na")) return false;
+      if (engineFilter && c.engine !== engineFilter) return false;
+      if (session.length && !session.includes(c.session)) return false;
+      if (status.length && !status.includes(c.status)) return false;
+      if (inner.length && !inner.some((s) => c.inner.includes(s))) return false;
+      if (topics.length && !topics.includes(c.topic)) return false;
+      if (subs.length && !subs.includes(c.subsection || "(no subsection)")) return false;
+      if (tags.length && !tags.some((t) => c.tags.includes(t))) return false;
+      if (qTopic && !c.topic.toLowerCase().includes(qTopic)) return false;
+      if (qNumber && !(c.number || "").startsWith(qNumber)) return false;
+      if (qError && !(c.errorKey || "").toLowerCase().includes(qError)) return false;
+      if (qComp && !(c.component || "").toLowerCase().includes(qComp)) return false;
+      if (qSkip && !(c.skipReason || "").toLowerCase().includes(qSkip)) return false;
+      if (qLinks === "yes" && !c.links.length) return false;
+      if (qLinks === "no" && c.links.length) return false;
+      if (innerFail && !c.hasInnerFail) return false;
+      if (terms.length && !matchQuery(haystackOf(c) + "\n" + (notes[c.id] || "").toLowerCase(), terms)) return false;
+      return true;
+    });
+
+    const sort = $("sortBy").value;
+    filtered.sort((a, b) => {
+      if (sort === "topic") return a.topic.localeCompare(b.topic, "en");
+      if (sort === "session") return a.session.localeCompare(b.session, "en") || compareNum(a, b);
+      if (sort === "status") return a.status.localeCompare(b.status) || compareNum(a, b);
+      if (sort === "number") return compareNum(a, b);
+      const sa = SEV[a.status] ?? 9, sb = SEV[b.status] ?? 9;
+      if (sa !== sb) return sa - sb;
+      return compareNum(a, b) || a.topic.localeCompare(b.topic, "en");
+    });
+    renderTable();
+    renderCounts();
+    updateMarkChrome();
+    renderActiveFilters();
+    if (compareState) renderCompareBar();
+    persistUi();
+  }
+  function compareNum(a, b) {
+    const pa = (a.number || "999").split(".").map(Number);
+    const pb = (b.number || "999").split(".").map(Number);
+    const n = Math.max(pa.length, pb.length);
+    for (let i = 0; i < n; i++) {
+      const da = pa[i] ?? 0, db = pb[i] ?? 0;
+      if (da !== db) return da - db;
+    }
+    return 0;
+  }
+
+  function renderChecks(container, items, key, searchId) {
+    const q = (searchId && $(searchId) ? $(searchId).value : "").trim().toLowerCase();
+    const selected = getSet(container.id);
+    const list = items.filter((x) => !q || String(x).toLowerCase().includes(q));
+    const shown = list.slice(0, 250);
+    const extra = selected.size ? `<div class="hint">${selected.size} selected. Empty = all.</div>` : `<div class="hint">Empty = all.</div>`;
+    container.innerHTML = extra + shown.map((v) => {
+      return `<label class="check"><input type="checkbox" value="${escapeHtml(v)}" ${selected.has(v) ? "checked" : ""}><span>${escapeHtml(v)}</span></label>`;
+    }).join("") + (list.length > shown.length ? `<div class="hint">Showing ${shown.length} of ${list.length}. Narrow the search.</div>` : "");
+  }
+
+  function fillFilterOptions() {
+    const sessions = uniqueSorted(checks.map((c) => c.session));
+    const statuses = uniqueSorted(checks.map((c) => c.status));
+    const inners = uniqueSorted(checks.flatMap((c) => c.inner));
+    const topics = uniqueSorted(checks.map((c) => c.topic));
+    const subs = uniqueSorted(checks.map((c) => c.subsection || "(no subsection)"));
+    const tags = uniqueSorted(checks.flatMap((c) => c.tags));
+    $("fltSession").dataset.values = JSON.stringify(sessions);
+    $("fltStatus").dataset.values = JSON.stringify(statuses);
+    $("fltInner").dataset.values = JSON.stringify(inners);
+    $("fltTopic").dataset.values = JSON.stringify(topics);
+    $("fltSub").dataset.values = JSON.stringify(subs);
+    $("fltTags").dataset.values = JSON.stringify(tags);
+    const paint = (id, arr, searchId) => {
+      $(id).innerHTML = "";
+      renderChecks($(id), arr, id, searchId);
+    };
+    paint("fltSession", sessions, "qSession");
+    paint("fltStatus", statuses);
+    paint("fltInner", inners);
+    paint("fltTopic", topics, "qTopicPick");
+    paint("fltSub", subs, "qSub");
+    paint("fltTags", tags, "qTag");
+  }
+
+  const FILTER_GROUP_LABEL = {
+    fltSession: "Session",
+    fltStatus: "Status",
+    fltInner: "Inner",
+    fltTopic: "Topic",
+    fltSub: "Subsection",
+    fltTags: "Tag"
+  };
+  function chipHtml(kind, key, value, label, display) {
+    return `<span class="filter-chip" title="${escapeHtml(label + ": " + display)}"><span class="k">${escapeHtml(label)}</span><span class="v">${escapeHtml(display)}</span><button type="button" class="x" data-kind="${kind}" data-key="${escapeHtml(key)}" data-value="${encodeURIComponent(value)}" aria-label="Remove ${escapeHtml(label)} ${escapeHtml(display)}">×</button></span>`;
+  }
+  function renderActiveFilters() {
+    const el = $("activeFilters");
+    if (!el) return;
+    const chips = [];
+    FILTER_GROUP_IDS.forEach((id) => {
+      const label = FILTER_GROUP_LABEL[id] || id;
+      [...getSet(id)].forEach((v) => {
+        const display = (id === "fltStatus" || id === "fltInner") ? statusLabel(v) : v;
+        chips.push(chipHtml("group", id, v, label, display));
+      });
+    });
+    [
+      ["qSearch", "Search"],
+      ["qTopic", "Topic"],
+      ["qNumber", "Number"],
+      ["qError", "error_key"],
+      ["qComponent", "component"],
+      ["qSkip", "skip"]
+    ].forEach(([id, label]) => {
+      const v = $(id).value.trim();
+      if (v) chips.push(chipHtml("field", id, v, label, v));
+    });
+    if ($("qLinks").value === "yes") chips.push(chipHtml("select", "qLinks", "yes", "Links", "with links"));
+    if ($("qLinks").value === "no") chips.push(chipHtml("select", "qLinks", "no", "Links", "without links"));
+    if ($("qInnerFail").checked) chips.push(chipHtml("check", "qInnerFail", "1", "More", "inner FAIL"));
+    if ($("qHideSkipNa").checked) chips.push(chipHtml("check", "qHideSkipNa", "1", "More", "hide SKIP/N/A"));
+    if ($("qOnlyMarked").checked) chips.push(chipHtml("check", "qOnlyMarked", "1", "More", "marked only"));
+    if ($("qOnlyNotes").checked) chips.push(chipHtml("check", "qOnlyNotes", "1", "More", "with notes"));
+    const qCompare = $("qCompare").value;
+    if (qCompare) {
+      const labels = { changed: "status changed", worsened: "worsened", improved: "improved", added: "new in current", gone: "gone from current" };
+      chips.push(chipHtml("select", "qCompare", qCompare, "Compare", labels[qCompare] || qCompare));
+    }
+    if (engineFilter && ENGINE_LABEL[engineFilter]) {
+      chips.push(chipHtml("engine", "engineFilter", engineFilter, "Engine", ENGINE_LABEL[engineFilter]));
+    }
+    el.innerHTML = chips.length ? chips.join("") : `<span class="hint">None. Empty groups mean all.</span>`;
+  }
+  function removeActiveFilter(kind, key, value) {
+    if (kind === "group") {
+      getSet(key).delete(value);
+      const box = $(key);
+      if (box) {
+        box.querySelectorAll("input[type=checkbox]").forEach((i) => {
+          if (i.value === value) i.checked = false;
+        });
+      }
+    } else if (kind === "field") {
+      $(key).value = "";
+    } else if (kind === "check") {
+      $(key).checked = false;
+    } else if (kind === "select") {
+      $(key).value = "";
+    } else if (kind === "engine") {
+      engineFilter = "";
+    }
+    applyFilters();
+  }
+
+  function renderCounts() {
+    const n = (st) => filtered.filter((c) => c.status === st).length;
+    const parts = [
+      ["FAIL", n("fail"), "fail"],
+      ["WARNING", n("warning"), "warning"],
+      ["INFO", n("info"), "info"],
+      ["PASS", n("pass"), "pass"],
+      ["SKIP", n("skip") + n("skip_with_content"), "skip"],
+      ["N/A", n("na"), "na"]
+    ];
+    $("counts").innerHTML = parts.map(([l, v, k]) =>
+      `<div class="stat"><b class="b-${k}" style="color:inherit">${v}</b><span>${l}</span></div>`
+    ).join("") + `<div class="stat"><b>${filtered.length}</b><span>filtered</span></div>
+      <div class="stat"><b>${checks.length}</b><span>total</span></div>`;
+    $("shown").textContent = `${filtered.length} / ${checks.length}`;
+  }
+
+  function markedChecks() {
+    return checks.filter((c) => marked.has(c.id));
+  }
+  function updateMarkChrome() {
+    const n = marked.size;
+    $("markedCount").textContent = `${n} marked`;
+    $("btnJson").disabled = !original || n === 0;
+    $("btnHtml").disabled = !original || n === 0;
+    if ($("btnJsonAll")) $("btnJsonAll").disabled = !original;
+    if ($("btnHtmlAll")) $("btnHtmlAll").disabled = !original;
+    if ($("btnJsonCmp")) $("btnJsonCmp").disabled = !compareState;
+    if ($("btnHtmlCmp")) $("btnHtmlCmp").disabled = !compareState;
+    $("btnMarkVisible").disabled = !filtered.length;
+    $("btnUnmarkVisible").disabled = !filtered.length;
+    $("btnClearMarks").disabled = n === 0;
+    const all = $("markAll");
+    if (all) {
+      const markable = filtered.filter((c) => !c.gone);
+      const vis = markable.filter((c) => marked.has(c.id)).length;
+      all.checked = markable.length > 0 && vis === markable.length;
+      all.indeterminate = vis > 0 && vis < markable.length;
+    }
+  }
+  function clearNotes() {
+    Object.keys(notes).forEach((k) => { delete notes[k]; });
+  }
+  function setNote(id, value) {
+    const prev = notes[id] || "";
+    const t = value == null ? "" : String(value);
+    if (t.trim()) notes[id] = t;
+    else delete notes[id];
+    $("tableWrap").querySelectorAll("tr[data-id]").forEach((tr) => {
+      if (tr.getAttribute("data-id") !== id) return;
+      const ta = tr.querySelector("textarea.note");
+      if (ta && ta !== document.activeElement && ta.value !== t) ta.value = t;
+    });
+    const detailNote = $("detailNote");
+    if (detailNote && selectedId === id && detailNote !== document.activeElement && detailNote.value !== t) {
+      detailNote.value = t;
+    }
+    const modalTa = $("noteModalText");
+    if (modalTa && noteModalId === id && modalTa !== document.activeElement && modalTa.value !== t) {
+      modalTa.value = t;
+    }
+    const had = !!String(prev).trim();
+    const has = !!t.trim();
+    if (t.trim() && !marked.has(id)) setMark(id, true);
+    else persistUi();
+    if ($("qOnlyNotes") && $("qOnlyNotes").checked && had !== has) applyFilters();
+  }
+  function noteFieldHtml(id, extraId, rows) {
+    const idAttr = extraId ? ` id="${extraId}"` : "";
+    return `<div class="note-wrap">
+      <textarea class="note" rows="${rows || 2}"${idAttr} placeholder="Observation">${escapeHtml(notes[id] || "")}</textarea>
+      <button type="button" class="note-expand" data-note-id="${escapeHtml(id)}" aria-label="Expand note" title="Expand note">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-expand"/></svg>
+      </button>
+    </div>`;
+  }
+  function openNoteModal(id) {
+    const c = findCheck(id);
+    if (!c || c.gone) return;
+    noteModalId = id;
+    if (selectedId !== id) {
+      selectedId = id;
+      $("tableWrap").querySelectorAll("tr.selected").forEach((r) => r.classList.remove("selected"));
+      $("tableWrap").querySelectorAll("tr[data-id]").forEach((tr) => {
+        if (tr.getAttribute("data-id") === id) tr.classList.add("selected");
+      });
+      renderDetail(id);
+    }
+    $("noteModalTitle").textContent = `${c.number ? c.number + " " : ""}${c.topic}`;
+    $("noteModalMeta").textContent = `${c.session}${c.subsection ? " / " + c.subsection : ""} · ${c.source}`;
+    $("noteModalText").value = notes[id] || "";
+    $("noteModal").hidden = false;
+    $("noteModalText").focus();
+  }
+  function closeNoteModal() {
+    if (noteModalId) setNote(noteModalId, $("noteModalText").value);
+    noteModalId = null;
+    $("noteModal").hidden = true;
+  }
+  function applyMarksFromDocument(obj) {
+    if (!obj || !Object.prototype.hasOwnProperty.call(obj, MARKED_FIELD)) return;
+    const raw = obj[MARKED_FIELD];
+    const keys = Array.isArray(raw)
+      ? raw.map((k) => String(k))
+      : (raw && typeof raw === "object"
+        ? Object.keys(raw).filter((k) => raw[k])
+        : []);
+    const byPath = new Map();
+    const byKey = new Map();
+    const byComp = new Map();
+    for (const c of checks) {
+      byPath.set(c.id, c.id);
+      byPath.set(c.path.join("/"), c.id);
+      if (c.key) byKey.set(c.key, c.id);
+      if (c.component) byComp.set(c.component, c.id);
+    }
+    marked.clear();
+    keys.forEach((k) => {
+      const id = byPath.get(k) || byKey.get(k) || byComp.get(k);
+      if (id) marked.add(id);
+    });
+  }
+  function applyNotesFromDocument(obj) {
+    const map = obj && obj[NOTES_FIELD];
+    if (!map || typeof map !== "object" || Array.isArray(map)) return;
+    const byPath = new Map();
+    const byKey = new Map();
+    const byComp = new Map();
+    for (const c of checks) {
+      byPath.set(c.id, c.id);
+      byPath.set(c.path.join("/"), c.id);
+      if (c.key) byKey.set(c.key, c.id);
+      if (c.component) byComp.set(c.component, c.id);
+    }
+    Object.entries(map).forEach(([k, v]) => {
+      if (typeof v !== "string" || !v.trim()) return;
+      const id = byPath.get(k) || byKey.get(k) || byComp.get(k);
+      if (id) notes[id] = v;
+    });
+  }
+  function setMark(id, on) {
+    const row = findCheck(id);
+    if (row && row.gone) return;
+    if (on) marked.add(id);
+    else marked.delete(id);
+    $("tableWrap").querySelectorAll("tr[data-id]").forEach((tr) => {
+      if (tr.getAttribute("data-id") !== id) return;
+      const cb = tr.querySelector("input.mark");
+      if (cb) cb.checked = on;
+      tr.classList.toggle("export-mark", on);
+    });
+    const detailMark = $("detailMark");
+    if (detailMark && selectedId === id) detailMark.checked = on;
+    if ($("qOnlyMarked").checked) applyFilters();
+    else {
+      updateMarkChrome();
+      persistUi();
+    }
+  }
+  function setMarks(ids, on) {
+    ids.forEach((id) => {
+      const row = findCheck(id);
+      if (row && row.gone) return;
+      if (on) marked.add(id);
+      else marked.delete(id);
+    });
+    $("tableWrap").querySelectorAll("tr[data-id]").forEach((tr) => {
+      const id = tr.getAttribute("data-id");
+      const isOn = marked.has(id);
+      const cb = tr.querySelector("input.mark");
+      if (cb) cb.checked = isOn;
+      tr.classList.toggle("export-mark", isOn);
+    });
+    if ($("qOnlyMarked").checked) applyFilters();
+    else {
+      updateMarkChrome();
+      persistUi();
+    }
+  }
+
+  function setDetailOpen(open) {
+    $("detail").hidden = !open;
+    $("content").classList.toggle("has-detail", !!open);
+  }
+  function findRow(id) {
+    const wrap = $("tableWrap");
+    if (!wrap || !id) return null;
+    const rows = wrap.querySelectorAll("tr[data-id]");
+    for (let i = 0; i < rows.length; i++) {
+      if (rows[i].getAttribute("data-id") === id) return rows[i];
+    }
+    return wrap.querySelector("tr.selected");
+  }
+  function scrollRowIntoView(id, block) {
+    const wrap = $("tableWrap");
+    const tr = findRow(id);
+    if (!wrap || !tr) return;
+    const wr = wrap.getBoundingClientRect();
+    const rr = tr.getBoundingClientRect();
+    if (block === "center") {
+      wrap.scrollTop += (rr.top + rr.height / 2) - (wr.top + wr.height / 2);
+      return;
+    }
+    if (rr.top < wr.top) wrap.scrollTop += rr.top - wr.top;
+    else if (rr.bottom > wr.bottom) wrap.scrollTop += rr.bottom - wr.bottom;
+  }
+  function selectRow(id, scroll) {
+    if (!id) return;
+    selectedId = id;
+    const wrap = $("tableWrap");
+    wrap.querySelectorAll("tr[data-id]").forEach((row) => {
+      row.classList.toggle("selected", row.getAttribute("data-id") === id);
+    });
+    renderDetail(id);
+    persistUi(true);
+    writeCheckHash(id);
+    if (scroll) scrollRowIntoView(id, "nearest");
+  }
+  function selectAdjacentRow(delta) {
+    if (!filtered.length) return;
+    const ids = filtered.map((c) => c.id);
+    let idx = selectedId ? ids.indexOf(selectedId) : -1;
+    if (idx < 0) idx = delta > 0 ? -1 : ids.length;
+    const next = idx + delta;
+    if (next < 0 || next >= ids.length) return;
+    selectRow(ids[next], true);
+  }
+  function selectAdjacentMarked(delta) {
+    let pool = filtered.filter((c) => marked.has(c.id));
+    if (!pool.length) pool = checks.filter((c) => marked.has(c.id));
+    if (!pool.length) return;
+    const ids = pool.map((c) => c.id);
+    let idx = selectedId ? ids.indexOf(selectedId) : -1;
+    if (idx < 0) idx = delta > 0 ? -1 : ids.length;
+    const next = idx + delta;
+    if (next < 0 || next >= ids.length) return;
+    selectRow(ids[next], true);
+  }
+
+  function colResizer(id) {
+    return `<span class="col-resizer" data-col="${id}" role="separator" aria-orientation="vertical" title="Drag to resize. Double-click to reset."></span>`;
+  }
+  function visibleColIds() {
+    const vis = layout.colVisible || sanitizeColVisible();
+    return COL_IDS.filter((id) => vis[id] !== false);
+  }
+  function colSum() {
+    const cols = layout.cols || COL_DEFAULTS;
+    return COL_MARK_W + COL_LINK_W + visibleColIds().reduce((s, id) => s + (cols[id] || COL_DEFAULTS[id]), 0);
+  }
+  function applyColWidths() {
+    const wrap = $("tableWrap");
+    const table = wrap && wrap.querySelector("table.grid");
+    if (!table) return;
+    const cols = layout.cols || COL_DEFAULTS;
+    table.querySelectorAll("col[data-col]").forEach((col) => {
+      const id = col.dataset.col;
+      const w = id === "mark" ? COL_MARK_W : id === "link" ? COL_LINK_W : cols[id];
+      if (w) col.style.width = w + "px";
+    });
+    const sum = colSum();
+    table.style.width = sum + "px";
+    table.style.minWidth = sum + "px";
+  }
+  function startColResize(e, handle) {
+    if (e.type === "mousedown" && e.button !== 0) return;
+    const id = handle.getAttribute("data-col");
+    if (!id || !COL_MIN[id]) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const pointX = (ev) => {
+      const t = ev.touches ? ev.touches[0] : ev;
+      return t.clientX;
+    };
+    const startX = pointX(e);
+    const startW = (layout.cols && layout.cols[id]) || COL_DEFAULTS[id];
+    handle.classList.add("active");
+    document.body.classList.add("resizing-col");
+    const move = (ev) => {
+      if (ev.cancelable) ev.preventDefault();
+      layout.cols[id] = Math.max(COL_MIN[id], Math.min(COL_MAX, Math.round(startW + (pointX(ev) - startX))));
+      applyColWidths();
+    };
+    const stop = () => {
+      handle.classList.remove("active");
+      document.body.classList.remove("resizing-col");
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseup", stop);
+      window.removeEventListener("touchmove", move);
+      window.removeEventListener("touchend", stop);
+      saveLayout(layout);
+    };
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseup", stop);
+    window.addEventListener("touchmove", move, { passive: false });
+    window.addEventListener("touchend", stop);
+  }
+  function resetColWidth(id) {
+    if (!COL_DEFAULTS[id]) return;
+    layout.cols[id] = COL_DEFAULTS[id];
+    applyColWidths();
+    saveLayout(layout);
+  }
+  function colHeadLabel(id) {
+    const meta = COL_META[id] || {};
+    return meta.head || meta.label || id;
+  }
+  function statusDiffHtml(c) {
+    if (!compareState) return "";
+    if (c.gone) return `<span class="diff-was gone">gone</span>`;
+    const other = lookupCompare(c);
+    if (!other) return `<span class="diff-was added">new</span>`;
+    if (other.status === c.status) return "";
+    return `<span class="diff-was ${compareKind(c)}">was ${escapeHtml(statusLabel(other.status))}</span>`;
+  }
+  function checkHref(c) {
+    const num = (c.number || "").trim();
+    const uniqueNum = num && !c.gone && checks.filter((x) => x.number === num).length === 1;
+    const token = uniqueNum
+      ? "n=" + encodeURIComponent(num)
+      : "c=" + encodeURIComponent(checkPathOf(c));
+    return location.pathname + location.search + "#" + token;
+  }
+  function cellHtml(c, id) {
+    if (id === "mark") {
+      if (c.gone) return `<td class="col-mark"></td>`;
+      return `<td class="col-mark"><input type="checkbox" class="mark" ${marked.has(c.id) ? "checked" : ""} title="Mark for export"></td>`;
+    }
+    if (id === "link") {
+      return `<td class="col-link"><button type="button" class="link-btn" data-href="${escapeHtml(checkHref(c))}" title="Copy link to this check"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-link"/></svg></button></td>`;
+    }
+    if (id === "status") return `<td>${highlightHtml(badge(c.status))}${statusDiffHtml(c)}</td>`;
+    if (id === "number") return `<td class="mono">${highlightPlain(c.number)}</td>`;
+    if (id === "source") return `<td>${highlightPlain(c.source)}</td>`;
+    if (id === "session") return `<td>${highlightPlain(c.session)}</td>`;
+    if (id === "topic") return `<td>${highlightPlain(c.topic)}</td>`;
+    if (id === "key") return `<td class="mono">${highlightPlain(c.errorKey || c.skipReason || c.key)}</td>`;
+    if (id === "tags") return `<td>${c.tags.map((t) => `<span class="tag">${highlightPlain(t)}</span>`).join("")}</td>`;
+    if (id === "notes") {
+      if (c.gone) return `<td class="col-note"></td>`;
+      return `<td class="col-note">${noteFieldHtml(c.id, "", 2)}</td>`;
+    }
+    return `<td></td>`;
+  }
+  function renderColPicker() {
+    const box = $("colPickerList");
+    if (!box) return;
+    const vis = layout.colVisible || sanitizeColVisible();
+    box.innerHTML = COL_IDS.map((id) => {
+      const on = vis[id] !== false;
+      return `<label class="check"><input type="checkbox" data-col="${id}" ${on ? "checked" : ""}>${escapeHtml(COL_META[id].label)}</label>`;
+    }).join("") + `<button type="button" class="btn" id="btnColsAll">Show all</button>`;
+  }
+  function setColVisible(id, on) {
+    if (!COL_META[id]) return false;
+    const next = Object.assign({}, layout.colVisible, { [id]: !!on });
+    if (!COL_IDS.some((c) => next[c] !== false)) return false;
+    layout.colVisible = sanitizeColVisible(next);
+    saveLayout(layout);
+    if (original) renderTable();
+    return true;
+  }
+  function showAllColumns() {
+    layout.colVisible = Object.fromEntries(COL_IDS.map((id) => [id, true]));
+    saveLayout(layout);
+    renderColPicker();
+    if (original) renderTable();
+  }
+
+  function renderTable() {
+    const wrap = $("tableWrap");
+    if (!original) return;
+    if (!filtered.length) {
+      wrap.innerHTML = `<div class="empty"><h2>No checks match this filter</h2><p>Adjust the filters or the search.</p></div>`;
+      setDetailOpen(false);
+      return;
+    }
+    const vis = ["mark", "link"].concat(visibleColIds());
+    const colgroup = vis.map((id) => `<col data-col="${id}">`).join("");
+    const heads = vis.map((id) => {
+      if (id === "mark") {
+        return `<th class="col-mark" data-col="mark"><input type="checkbox" id="markAll" class="mark" title="Mark or unmark all visible rows"></th>`;
+      }
+      if (id === "link") {
+        return `<th class="col-link" data-col="link"><svg aria-hidden="true" viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round"><use href="#i-link"/></svg></th>`;
+      }
+      const cls = COL_META[id].thClass ? ` class="${COL_META[id].thClass}"` : "";
+      return `<th${cls} data-col="${id}">${escapeHtml(colHeadLabel(id))}${colResizer(id)}</th>`;
+    }).join("");
+    wrap.innerHTML = `<table class="grid">
+      <colgroup>${colgroup}</colgroup>
+      <thead><tr>${heads}</tr></thead>
+      <tbody>${filtered.map((c) => {
+        const kind = compareKind(c);
+        const diffCls = kind && kind !== "same" ? " diff-" + kind : "";
+        return `
+      <tr data-id="${escapeHtml(c.id)}" class="${c.id === selectedId ? "selected" : ""} ${marked.has(c.id) ? "export-mark" : ""}${diffCls}">
+        ${vis.map((id) => cellHtml(c, id)).join("")}
+      </tr>`;
+      }).join("")}</tbody></table>`;
+    applyColWidths();
+    updateMarkChrome();
+    if (selectedId && !filtered.some((c) => c.id === selectedId)) {
+      selectedId = null;
+      setDetailOpen(false);
+    } else if (selectedId) renderDetail(selectedId);
+  }
+
+  function linkifyKcs(html) {
+    let inAnchor = 0;
+    return String(html == null ? "" : html).split(/(<[^>]+>)/).map((part) => {
+      if (part.charAt(0) === "<") {
+        if (/^<a\b/i.test(part)) inAnchor++;
+        else if (/^<\/a>/i.test(part) && inAnchor) inAnchor--;
+        return part;
+      }
+      if (inAnchor) return part;
+      return part.replace(/(KCS)(\s*[:#-]?\s*)(\d{5,})/gi, (_, kcs, sep, num) =>
+        `${kcs}${sep}<a href="https://access.redhat.com/solutions/${num}" target="_blank" rel="noopener">${num}</a>`
+      );
+    }).join("");
+  }
+  function linkify(text, keepNewlines) {
+    const escaped = escapeHtml(String(text == null ? "" : text));
+    const body = keepNewlines === false ? escaped : escaped.replace(/\n/g, "<br>");
+    const withUrls = body.replace(/(https?:\/\/[^\s<]+)/g, (m) => {
+      const trail = m.match(/[).,;]+$/);
+      const url = trail ? m.slice(0, -trail[0].length) : m;
+      const extra = trail ? trail[0] : "";
+      return `<a href="${url}" target="_blank" rel="noopener">${url}</a>${extra}`;
+    });
+    return linkifyKcs(withUrls);
+  }
+  function isPlainObject(v) {
+    return !!v && typeof v === "object" && !Array.isArray(v);
+  }
+  function isPgLine(obj) {
+    return isPlainObject(obj) && ("message" in obj || "response_type" in obj) && ("level" in obj || "name" in obj);
+  }
+  function isPgResult(result) {
+    return Array.isArray(result) && result.length > 0 && result.every((it) => it == null || isPgLine(it));
+  }
+  function looksAligned(msg) {
+    return / {2,}/.test(msg) && !/^https?:/.test(msg);
+  }
+  function looksLikeLog(s) {
+    return typeof s === "string" && (s.includes('{"level"') || s.includes('"caller"') || s.includes('"ts":'));
+  }
+  function isCondition(obj) {
+    if (!isPlainObject(obj)) return false;
+    const keys = Object.keys(obj);
+    return keys.includes("status") && (keys.includes("last_trans_time") || keys.includes("reason") || keys.includes("message"));
+  }
+  function objectKeys(obj) {
+    return Object.keys(obj).filter((k) => k !== "type");
+  }
+  function sameKeySet(arr) {
+    if (!arr.length || !arr.every(isPlainObject)) return false;
+    const sig = (o) => objectKeys(o).slice().sort().join("\0");
+    const first = sig(arr[0]);
+    return !!first && arr.every((o) => sig(o) === first);
+  }
+  function fmtNumber(n) {
+    if (!Number.isFinite(n)) return String(n);
+    if (Number.isInteger(n)) return String(n);
+    return String(n.toFixed(4)).replace(/\.?0+$/, "");
+  }
+  function tryEmbeddedJson(s) {
+    const i = s.indexOf("{");
+    if (i < 0) return null;
+    try {
+      const obj = JSON.parse(s.slice(i));
+      if (obj && typeof obj === "object") return { prefix: s.slice(0, i).trim(), obj };
+    } catch (e) { /* ignore */ }
+    return null;
+  }
+  function renderPgResult(result) {
+    const parts = [];
+    let preBuf = [];
+    const flushPre = () => {
+      if (!preBuf.length) return;
+      parts.push(`<pre class="find-pre">${preBuf.map((m) => linkify(m)).join("<br>")}</pre>`);
+      preBuf = [];
+    };
+    for (const it of result) {
+      if (!it || typeof it !== "object") continue;
+      const msg = it.message == null ? "" : String(it.message).replace(/[ \t]+$/g, "").replace(/^\n+/, "");
+      const name = it.name == null ? "" : String(it.name).trim();
+      const rt = it.response_type;
+      if (rt) {
+        flushPre();
+        const body = msg.replace(/^\s*-\s*/, "").trim();
+        const issueCls = isIssueStatus(rt) ? " issue-hit" : "";
+        parts.push(`<div class="find-line${issueCls}">${name ? `<b>${linkifyKcs(escapeHtml(name))}</b> ` : ""}${badge(rt)}${body ? " — " + linkify(body) : ""}</div>`);
+      } else if (msg) {
+        if (!name && looksAligned(msg) && !/^\s*TIP\b/i.test(msg)) {
+          preBuf.push(msg);
+        } else {
+          flushPre();
+          if (!name) {
+            const t = msg.trim();
+            if (/^TIP\b/i.test(t)) parts.push(`<div class="find-tip">${linkify(t)}</div>`);
+            else if (/^-\s/.test(t) || (/:/.test(t) && !/^[A-Z0-9][A-Z0-9 ._/()-]*$/.test(t))) {
+              parts.push(`<div class="find-line">${linkify(t.replace(/^-\s*/, ""))}</div>`);
+            } else {
+              parts.push(`<div class="find-head">${linkify(t.replace(/:+$/, ""))}</div>`);
+            }
+          } else {
+            parts.push(`<div class="find-line"><b>${linkifyKcs(escapeHtml(name))}</b>: ${linkify(msg)}</div>`);
+          }
+        }
+      }
+    }
+    flushPre();
+    return `<div class="find-result">${parts.join("")}</div>`;
+  }
+  function renderTableFromObjects(arr, depth) {
+    const keys = objectKeys(arr[0]);
+    if (!keys.length || keys.length > 12) return null;
+    const head = `<thead><tr>${keys.map((k) => `<th>${escapeHtml(k)}</th>`).join("")}</tr></thead>`;
+    const body = arr.map((row) =>
+      `<tr>${keys.map((k) => `<td>${renderValue(row[k], depth + 1)}</td>`).join("")}</tr>`
+    ).join("");
+    return `<table class="kv">${head}<tbody>${body}</tbody></table>`;
+  }
+  function renderConditionTable(entries, depth) {
+    const sample = entries.map(([, v]) => v).find(isCondition) || {};
+    const cols = ["status", "last_trans_time", "reason", "message"].filter((k) =>
+      entries.some(([, v]) => isCondition(v) && k in v)
+    );
+    Object.keys(sample).forEach((k) => { if (!cols.includes(k) && k !== "type") cols.push(k); });
+    let html = `<table class="kv"><thead><tr><th>Condition</th>${cols.map((c) => `<th>${escapeHtml(c)}</th>`).join("")}</tr></thead><tbody>`;
+    for (const [k, v] of entries) {
+      if (!isCondition(v)) continue;
+      html += `<tr><td>${escapeHtml(k)}</td>${cols.map((c) => `<td>${renderValue(v[c], depth + 1)}</td>`).join("")}</tr>`;
+    }
+    return html + "</tbody></table>";
+  }
+  function renderValue(obj, depth) {
+    depth = depth || 0;
+    if (depth > 14) return `<span class="muted">…</span>`;
+    if (obj == null) return `<span class="muted">None</span>`;
+    if (typeof obj === "boolean") return obj ? "True" : "False";
+    if (typeof obj === "number") return fmtNumber(obj);
+    if (typeof obj === "string") {
+      if (!obj) return "";
+      if (looksLikeLog(obj)) {
+        const parsed = tryEmbeddedJson(obj);
+        if (parsed && isPlainObject(parsed.obj)) {
+          const prefix = parsed.prefix ? `<div class="muted">${escapeHtml(parsed.prefix)}</div>` : "";
+          return `${prefix}${renderValue(parsed.obj, depth + 1)}`;
+        }
+        return `<div class="logline">${linkify(obj)}</div>`;
+      }
+      if (/^https?:\/\//.test(obj)) {
+        return `<a href="${escapeHtml(obj)}" target="_blank" rel="noopener">${escapeHtml(obj)}</a>`;
+      }
+      return linkify(obj);
+    }
+    if (Array.isArray(obj)) {
+      if (!obj.length) return `<span class="muted">(empty)</span>`;
+      if (obj.every((x) => x == null || ["string", "number", "boolean"].includes(typeof x))) {
+        return `<ul class="find-tree">${obj.map((x) => `<li>${renderValue(x, depth + 1)}</li>`).join("")}</ul>`;
+      }
+      if (obj.every((x) => Array.isArray(x) && x.every((y) => y == null || ["string", "number", "boolean"].includes(typeof y)))) {
+        return `<table class="kv"><tbody>${obj.map((row) =>
+          `<tr>${row.map((cell) => `<td>${renderValue(cell, depth + 1)}</td>`).join("")}</tr>`
+        ).join("")}</tbody></table>`;
+      }
+      if (isPgResult(obj)) return renderPgResult(obj);
+      const objs = obj.filter(isPlainObject);
+      if (objs.length === obj.length && sameKeySet(objs)) {
+        const keys = objectKeys(objs[0]);
+        if (keys.length === 1) {
+          return `<ul class="find-tree">${objs.map((item) => `<li>${renderValue(item[keys[0]], depth + 1)}</li>`).join("")}</ul>`;
+        }
+        const scalarRows = objs.every((item) => keys.every((k) => item[k] == null || ["string", "number", "boolean"].includes(typeof item[k]) || Array.isArray(item[k])));
+        if (scalarRows && keys.length >= 2) {
+          const table = renderTableFromObjects(objs, depth);
+          if (table) return table;
+        }
+        if (objs.every((item) => {
+          const rest = Object.entries(item).filter(([k]) => k !== "name");
+          return item.name != null && rest.length && rest.every(([, v]) => isCondition(v));
+        })) {
+          return objs.map((item) => {
+            const rest = Object.entries(item).filter(([k]) => k !== "name");
+            return `<div class="find-head">${escapeHtml(String(item.name))}</div>${renderConditionTable(rest, depth)}`;
+          }).join("");
+        }
+      }
+      return `<ul class="find-tree">${obj.map((item) => {
+        if (isPlainObject(item)) {
+          const idk = ["name", "pod_name", "mcp_name"].find((k) => item[k] != null);
+          if (idk) {
+            const rest = {};
+            for (const [k, v] of Object.entries(item)) {
+              if (k !== idk && k !== "type") rest[k] = v;
+            }
+            return `<li><b>${escapeHtml(String(item[idk]))}</b>${renderValue(rest, depth + 1)}</li>`;
+          }
+        }
+        return `<li>${renderValue(item, depth + 1)}</li>`;
+      }).join("")}</ul>`;
+    }
+    if (typeof obj === "object") {
+      const entries = Object.entries(obj).filter(([k, v]) => k !== "type" && v !== undefined);
+      if (!entries.length) return "";
+      const named = entries.filter(([k]) => k !== "name");
+      if (obj.name != null && named.length && named.every(([, v]) => isCondition(v))) {
+        return `<div class="find-head">${escapeHtml(String(obj.name))}</div>${renderConditionTable(named, depth)}`;
+      }
+      if (entries.length && entries.every(([, v]) => Array.isArray(v) && v.every(isCondition))) {
+        return entries.map(([k, arr]) =>
+          `<div class="find-head">${escapeHtml(k)}</div>${renderConditionTable(arr.map((c, i) => [c.type || String(i), c]), depth)}`
+        ).join("");
+      }
+      const vals = entries.map(([, v]) => v);
+      if (entries.length === 1) {
+        const [k, v] = entries[0];
+        if (v == null || ["string", "number", "boolean"].includes(typeof v)) {
+          const item = `<span class="k">${escapeHtml(k)}</span>: ${renderValue(v, depth + 1)}`;
+          return depth > 0 ? ` — ${item}` : `<ul class="find-tree"><li>${item}</li></ul>`;
+        }
+      }
+      if (vals.length >= 2 && vals.every((v) => v == null || ["string", "number", "boolean"].includes(typeof v))) {
+        return `<table class="kv">${entries.map(([k, v]) =>
+          `<tr><th>${escapeHtml(k)}</th><td>${renderValue(v, depth + 1)}</td></tr>`
+        ).join("")}</table>`;
+      }
+      if (vals.length && vals.every(isPlainObject) && sameKeySet(vals) && objectKeys(vals[0]).length <= 8) {
+        const keys = objectKeys(vals[0]);
+        if (keys.every((k) => vals.every((v) => v[k] == null || ["string", "number", "boolean"].includes(typeof v[k])))) {
+          return `<table class="kv"><thead><tr><th></th>${keys.map((k) => `<th>${escapeHtml(k)}</th>`).join("")}</tr></thead><tbody>${
+            entries.map(([name, v]) =>
+              `<tr><th>${escapeHtml(name)}</th>${keys.map((k) => `<td>${renderValue(v[k], depth + 1)}</td>`).join("")}</tr>`
+            ).join("")
+          }</tbody></table>`;
+        }
+      }
+      return `<ul class="find-tree">${entries.map(([k, v]) => {
+        const label = `<span class="k">${escapeHtml(k)}</span>`;
+        if (v && typeof v === "object") return `<li>${label}${renderValue(v, depth + 1)}</li>`;
+        return `<li>${label}: ${renderValue(v, depth + 1)}</li>`;
+      }).join("")}</ul>`;
+    }
+    return linkify(String(obj));
+  }
+  function contentList(content, keys) {
+    const out = [];
+    if (!content) return out;
+    for (const k of keys) {
+      const v = content[k];
+      if (Array.isArray(v)) v.forEach((x) => { if (x) out.push(String(x)); });
+      else if (typeof v === "string" && v.trim()) out.push(v);
+    }
+    return out;
+  }
+  function renderViewerLinks(c) {
+    if (!c.links.length) return "";
+    const groups = {};
+    for (const l of c.links) (groups[l.group] ||= []).push(l.url);
+    return Object.entries(groups).map(([g, urls]) =>
+      `<div><b>${escapeHtml(String(g).toUpperCase())}</b><ul class="find-tree">${urls.map((u) =>
+        `<li><a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(u)}</a></li>`
+      ).join("")}</ul></div>`
+    ).join("");
+  }
+  function renderResultViewer(result, engine) {
+    if (result == null || result === "") return `<span class="muted">No evidence in this check.</span>`;
+    if (engine === "phased_gates" && Array.isArray(result)) return renderPgResult(result);
+    if (isPgResult(result)) return renderPgResult(result);
+    return renderValue(result);
+  }
+
+  function resultCell() {
+    const table = $("detail") && $("detail").querySelector(".find-table");
+    if (!table) return null;
+    for (const tr of table.querySelectorAll("tr")) {
+      const th = tr.querySelector(":scope > th");
+      if (th && th.textContent.trim() === "Result") return tr.querySelector(":scope > td");
+    }
+    return null;
+  }
+  function collectIssueHits() {
+    const td = resultCell();
+    if (!td) return [];
+    const out = [];
+    td.querySelectorAll(".issue-hit, .badge").forEach((el) => {
+      if (el.classList.contains("badge")) {
+        const cls = [...el.classList].find((c) => c.startsWith("b-"));
+        if (!cls || !isIssueStatus(cls.slice(2).replace(/-/g, " "))) return;
+      }
+      const target = el.classList.contains("badge")
+        ? (el.closest(".issue-hit, .find-line, tr, li") || el)
+        : el;
+      if (!out.includes(target)) out.push(target);
+    });
+    return out;
+  }
+  function hitIssueLabel(el) {
+    const badgeEl = el.classList.contains("badge") ? el : el.querySelector(".badge");
+    if (!badgeEl) return "ISSUE";
+    const cls = [...badgeEl.classList].find((c) => c.startsWith("b-"));
+    return issueKindLabel(cls ? cls.slice(2).replace(/-/g, " ") : "");
+  }
+  function scrollDetailTo(el) {
+    const pane = $("detail") && $("detail").querySelector(".detail-body");
+    if (!pane || !el) return;
+    const paneRect = pane.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - paneRect.top - pane.clientHeight * 0.28 + pane.scrollTop;
+    pane.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  }
+  function updateFailNav(hits) {
+    hits = hits || collectIssueHits();
+    const nav = $("failNav");
+    const label = $("failNavLabel");
+    if (!nav) return;
+    if (!hits.length) {
+      nav.hidden = true;
+      nav.classList.remove("is-warn");
+      return;
+    }
+    nav.hidden = false;
+    if (failHitIndex < 0 || failHitIndex >= hits.length) failHitIndex = 0;
+    const kind = hitIssueLabel(hits[failHitIndex]);
+    nav.classList.toggle("is-warn", kind !== "FAIL");
+    if (label) label.textContent = `${kind} ${failHitIndex + 1}/${hits.length}`;
+    hits.forEach((el, i) => el.classList.toggle("issue-hit-current", i === failHitIndex));
+  }
+  function jumpToFail(delta) {
+    const hits = collectIssueHits();
+    if (!hits.length) return;
+    failHitIndex = (failHitIndex + delta + hits.length) % hits.length;
+    updateFailNav(hits);
+    scrollDetailTo(hits[failHitIndex]);
+  }
+  function unwrapMarks(root, cls) {
+    if (!root) return;
+    root.querySelectorAll("mark." + cls).forEach((m) => {
+      const p = m.parentNode;
+      if (!p) return;
+      while (m.firstChild) p.insertBefore(m.firstChild, m);
+      p.removeChild(m);
+    });
+    root.normalize();
+  }
+  function wrapTextMatches(root, query) {
+    const q = String(query || "").trim();
+    if (!root || !q) return [];
+    let re;
+    try { re = new RegExp(escapeRe(q), "gi"); }
+    catch (_) { return []; }
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        const p = node.parentElement;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        const tag = p.tagName;
+        if (tag === "TEXTAREA" || tag === "INPUT" || tag === "SCRIPT" || tag === "STYLE") return NodeFilter.FILTER_REJECT;
+        if (!node.nodeValue) return NodeFilter.FILTER_REJECT;
+        re.lastIndex = 0;
+        return re.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    const marks = [];
+    for (const node of nodes) {
+      const text = node.nodeValue;
+      re.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let last = 0;
+      let m;
+      while ((m = re.exec(text))) {
+        if (!m[0]) break;
+        if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+        const mark = document.createElement("mark");
+        mark.className = "dhit";
+        mark.textContent = m[0];
+        frag.appendChild(mark);
+        marks.push(mark);
+        last = m.index + m[0].length;
+        if (re.lastIndex === m.index) re.lastIndex++;
+      }
+      if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+      if (node.parentNode) node.parentNode.replaceChild(frag, node);
+    }
+    return marks;
+  }
+  function collectDetailFindHits() {
+    const root = resultCell();
+    return root ? [...root.querySelectorAll("mark.dhit")] : [];
+  }
+  function updateDetailFindNav(marks) {
+    marks = marks || collectDetailFindHits();
+    const nav = $("detailFindNav");
+    const label = $("detailFindLabel");
+    const q = (detailQuery || "").trim();
+    if (!nav) return marks;
+    nav.hidden = !q;
+    if (!q) return marks;
+    if (!marks.length) {
+      detailFindIndex = 0;
+      if (label) label.textContent = "0/0";
+    } else {
+      if (detailFindIndex < 0 || detailFindIndex >= marks.length) detailFindIndex = 0;
+      marks.forEach((el, i) => el.classList.toggle("is-current", i === detailFindIndex));
+      if (label) label.textContent = `${detailFindIndex + 1}/${marks.length}`;
+    }
+    const prev = $("detailFindPrev");
+    const next = $("detailFindNext");
+    if (prev) prev.disabled = !marks.length;
+    if (next) next.disabled = !marks.length;
+    return marks;
+  }
+  function applyDetailSearchHighlight(scroll) {
+    const root = resultCell();
+    const q = (detailQuery || "").trim();
+    if (root) {
+      unwrapMarks(root, "dhit");
+      if (q) wrapTextMatches(root, q);
+    }
+    const marks = updateDetailFindNav();
+    if (scroll && marks.length) scrollDetailTo(marks[detailFindIndex] || marks[0]);
+    return marks;
+  }
+  function jumpDetailFind(delta) {
+    const marks = collectDetailFindHits();
+    if (!marks.length) {
+      applyDetailSearchHighlight(true);
+      return;
+    }
+    detailFindIndex = (detailFindIndex + delta + marks.length) % marks.length;
+    updateDetailFindNav(marks);
+    scrollDetailTo(marks[detailFindIndex]);
+  }
+  function bindDetailSearch() {
+    const input = $("qDetail");
+    if (!input) return;
+    input.value = detailQuery;
+    input.oninput = () => {
+      detailQuery = input.value;
+      detailFindIndex = 0;
+      clearTimeout(detailFindTimer);
+      detailFindTimer = setTimeout(() => applyDetailSearchHighlight(true), 70);
+    };
+    input.onkeydown = (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        e.stopPropagation();
+        clearTimeout(detailFindTimer);
+        const prevQ = (detailQuery || "").trim();
+        detailQuery = input.value;
+        const marks = applyDetailSearchHighlight(false);
+        if (!marks.length) return;
+        if (prevQ && prevQ === (detailQuery || "").trim()) jumpDetailFind(e.shiftKey ? -1 : 1);
+        else {
+          detailFindIndex = e.shiftKey ? marks.length - 1 : 0;
+          updateDetailFindNav(marks);
+          scrollDetailTo(marks[detailFindIndex]);
+        }
+      } else if (e.key === "Escape") {
+        if (!(detailQuery || "").trim() && !input.value) return;
+        e.preventDefault();
+        detailQuery = "";
+        input.value = "";
+        detailFindIndex = 0;
+        applyDetailSearchHighlight(false);
+      }
+    };
+    const prev = $("detailFindPrev");
+    const next = $("detailFindNext");
+    if (prev) prev.onclick = () => jumpDetailFind(-1);
+    if (next) next.onclick = () => jumpDetailFind(1);
+  }
+  function bindFailNav() {
+    failHitIndex = 0;
+    const hits = collectIssueHits();
+    updateFailNav(hits);
+    const prev = $("failPrev");
+    const next = $("failNext");
+    if (prev) prev.onclick = () => jumpToFail(-1);
+    if (next) next.onclick = () => jumpToFail(1);
+    if (hits.length && !(detailQuery || "").trim()) {
+      requestAnimationFrame(() => {
+        const again = collectIssueHits();
+        if (again[0]) {
+          updateFailNav(again);
+          scrollDetailTo(again[0]);
+        }
+      });
+    }
+  }
+
+  function renderDetail(id) {
+    const c = findCheck(id);
+    if (!c) { setDetailOpen(false); return; }
+    selectedId = id;
+    if (c.gone) {
+      const loc = `${highlightPlain(c.session)}${c.subsection ? " / " + highlightPlain(c.subsection) : ""} · ${highlightPlain(c.source)}`;
+      const checkTitle = `${c.number ? escapeHtml(c.number) + " " : ""}${linkifyKcs(escapeHtml(c.topic))}`;
+      setDetailOpen(true);
+      $("detail").innerHTML = `
+      <div class="find-meta">${loc}</div>
+      <div class="detail-body">
+      <table class="find-table">
+        <tr><th>Check</th><td>${checkTitle}</td></tr>
+        <tr><th>Status</th><td>${badge(c.status)}${statusDiffHtml(c)}</td></tr>
+        <tr><th>Path</th><td class="mono">${escapeHtml(checkPathOf(c))}</td></tr>
+        <tr><th>Result</th><td><p class="muted">This check is in the compared JSON and not in the current document. There is no result payload to show.</p></td></tr>
+      </table>
+      </div>`;
+      return;
+    }
+    const ruleInfo = contentList(c.content, ["rule_info"]);
+    const warnings = contentList(c.content, ["warning"]);
+    const tips = contentList(c.content, ["before", "after"]);
+    const impact = contentList(c.content, ["impact", "remediation"]);
+    const checkTitle = `${c.number ? escapeHtml(c.number) + " " : ""}${linkifyKcs(escapeHtml(c.topic))}`;
+    const checkHead = ruleInfo.length
+      ? `${checkTitle}<br>${ruleInfo.map(linkify).join("<br>")}`
+      : checkTitle;
+    const statusExtra = [];
+    if (warnings.length) statusExtra.push(`<div class="find-warn">${warnings.map(linkify).join("<br>")}</div>`);
+    if (c.skipReason) statusExtra.push(`<div class="muted">${linkify(c.skipReason)}</div>`);
+    const statusCell = `${badge(c.status)}${statusDiffHtml(c)}${statusExtra.join("")}`;
+    const rows = [
+      ["Check", checkHead],
+      ["Status", statusCell]
+    ];
+    if (tips.length) rows.push(["TIP", tips.map(linkify).join("<br>")]);
+    if (impact.length) rows.push(["Info", impact.map(linkify).join("<br>")]);
+    rows.push(["Result", renderResultViewer(c.result, c.engine)]);
+    const linksHtml = renderViewerLinks(c);
+    if (linksHtml) rows.push(["Links", linksHtml]);
+    rows.push(["Notes", noteFieldHtml(c.id, "detailNote", 20)]);
+    const loc = `${highlightPlain(c.session)}${c.subsection ? " / " + highlightPlain(c.subsection) : ""} · ${highlightPlain(c.source)}`;
+    setDetailOpen(true);
+    $("detail").innerHTML = `
+      <div class="find-meta">
+        <input class="search detail-search" id="qDetail" type="search" placeholder="Find in result" spellcheck="false" autocomplete="off" aria-label="Find in result">
+        <span class="detail-find-nav" id="detailFindNav" hidden>
+          <span class="btn-tip" data-tip="Previous match">
+            <button type="button" class="btn btn-icon" id="detailFindPrev" aria-label="Previous match">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-chevron-up"/></svg>
+            </button>
+          </span>
+          <span class="detail-find-label" id="detailFindLabel">0/0</span>
+          <span class="btn-tip" data-tip="Next match">
+            <button type="button" class="btn btn-icon" id="detailFindNext" aria-label="Next match">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-chevron-down"/></svg>
+            </button>
+          </span>
+        </span>
+        <label class="check"><input type="checkbox" id="detailMark" class="mark" ${marked.has(c.id) ? "checked" : ""}> Mark for export</label>
+        · ${loc}${c.tags.length ? " · " + c.tags.map((t) => `<span class="tag">${highlightPlain(t)}</span>`).join("") : ""}
+        <span class="fail-nav" id="failNav" hidden>
+          <span class="btn-tip" data-tip="Previous FAIL / WARN / LIMITATION">
+            <button type="button" class="btn btn-icon" id="failPrev" aria-label="Previous FAIL, WARN or LIMITATION">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-chevron-up"/></svg>
+            </button>
+          </span>
+          <span class="fail-nav-label" id="failNavLabel">FAIL</span>
+          <span class="btn-tip" data-tip="Next FAIL / WARN / LIMITATION">
+            <button type="button" class="btn btn-icon" id="failNext" aria-label="Next FAIL, WARN or LIMITATION">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-chevron-down"/></svg>
+            </button>
+          </span>
+        </span>
+      </div>
+      <div class="detail-body">
+      <table class="find-table">${rows.map(([k, v]) =>
+        `<tr><th>${k}</th><td>${k === "Notes" ? v : highlightHtml(v)}</td></tr>`
+      ).join("")}</table>
+      </div>`;
+    $("detailMark").onchange = () => setMark(c.id, $("detailMark").checked);
+    $("detailNote").oninput = () => setNote(c.id, $("detailNote").value);
+    bindFailNav();
+    bindDetailSearch();
+    const findHits = applyDetailSearchHighlight(false);
+    if (findHits.length) {
+      requestAnimationFrame(() => scrollDetailTo(findHits[detailFindIndex] || findHits[0]));
+    }
+  }
+
+  /* ---------- load / export ---------- */
+  function ingest(obj, name, opts) {
+    opts = opts || {};
+    if (!obj || typeof obj !== "object" || !obj.rule_sets) {
+      alert("Invalid JSON: expected the Insights format with rule_sets (.pg.json file).");
+      return;
+    }
+    original = obj;
+    sourceBlob = opts.blob instanceof Blob ? opts.blob : null;
+    sourceName = name || sourceName;
+    checks = [];
+    clearNotes();
+    if (!opts.restore) {
+      selectedId = null;
+      marked.clear();
+      FILTER_GROUP_IDS.forEach((id) => getSet(id).clear());
+      restoring = true;
+      FILTER_TEXT_IDS.forEach((id) => { $(id).value = ""; });
+      $("qLinks").value = "";
+      $("qInnerFail").checked = false;
+      $("qHideSkipNa").checked = false;
+      $("qOnlyMarked").checked = false;
+      $("qOnlyNotes").checked = false;
+      $("qCompare").value = "";
+      engineFilter = "";
+      restoring = false;
+    }
+    for (const [k, tree] of Object.entries(obj.rule_sets || {})) {
+      walk(tree, ["rule_sets", k], { dirStack: [], inSkips: false });
+    }
+    applyNotesFromDocument(obj);
+    applyMarksFromDocument(obj);
+    const sys = obj.system && obj.system.metadata ? obj.system.metadata : {};
+    const am = obj.analysis_metadata || {};
+    const collected = formatGeneratedAt(findCollectionTime(obj));
+    const analyzed = formatGeneratedAt(am.finish || am.start);
+    const pgVer = am.plugin_sets && am.plugin_sets["phased-gates"] ? am.plugin_sets["phased-gates"].version : "";
+    function metaItem(label, value, cls) {
+      const v = value == null || String(value).trim() === "" ? "—" : String(value);
+      return `<span class="meta-item${cls ? " " + cls : ""}"><span class="k">${escapeHtml(label)}</span><span class="v" title="${escapeHtml(v)}">${escapeHtml(v)}</span></span>`;
+    }
+    $("meta").innerHTML = [
+      metaItem("Cluster", sys.cluster_name || "cluster"),
+      metaItem("Version", sys.cluster_version || "?"),
+      metaItem("ID", sys.cluster_id || "", "id"),
+      metaItem("Checks", String(checks.length)),
+      metaItem("Collected", collected),
+      metaItem("Analyzed", analyzed),
+      metaItem("Size", sourceBlob ? formatBytes(sourceBlob.size) : ""),
+      metaItem("Plugin", pgVer)
+    ].join("");
+    refreshCompare();
+    fillFilterOptions();
+    if (opts.restore && opts.ui) applyUiState(opts.ui);
+    $("empty") && ($("empty").style.display = "none");
+    applyFilters();
+    if (!applyCheckHash()) {
+      if (opts.restore && selectedId) {
+        writeCheckHash(selectedId);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => scrollRowIntoView(selectedId, "center"));
+        });
+      }
+    }
+    if (!opts.restore) persistDocument();
+  }
+
+  function leafWithNote(node, id) {
+    const n = (notes[id] || "").trim();
+    if (!n) {
+      if (!(NOTES_FIELD in node)) return node;
+      const copy = Object.assign({}, node);
+      delete copy[NOTES_FIELD];
+      return copy;
+    }
+    if (node[NOTES_FIELD] === n) return node;
+    const copy = Object.assign({}, node);
+    copy[NOTES_FIELD] = n;
+    return copy;
+  }
+  function attachNotesToTree(node, path, selected) {
+    if (!node || typeof node !== "object" || Array.isArray(node)) return node;
+    if (isLeaf(node)) {
+      const id = path.join("\x1f");
+      if (selected && !selected.has(id)) return null;
+      return leafWithNote(node, id);
+    }
+    const out = {};
+    let kept = 0;
+    let changed = false;
+    for (const [k, v] of Object.entries(node)) {
+      if (k === "node_metadata") continue;
+      if (WALK_SKIP.has(k)) continue;
+      const child = attachNotesToTree(v, path.concat(k), selected);
+      if (child != null) {
+        out[k] = child;
+        kept++;
+        if (child !== v) changed = true;
+      } else {
+        changed = true;
+      }
+    }
+    if (node.node_metadata) out.node_metadata = node.node_metadata;
+    if (selected && !kept) {
+      const keys = Object.keys(out).filter((k) => k !== "node_metadata" && !WALK_SKIP.has(k));
+      if (!keys.length) return null;
+    }
+    if (!selected && !changed) return node;
+    const ordered = {};
+    for (const k of Object.keys(node)) {
+      if (k in out) ordered[k] = out[k];
+    }
+    return ordered;
+  }
+  function notesMapFor(list) {
+    const out = {};
+    for (const c of list) {
+      const n = (notes[c.id] || "").trim();
+      if (n) out[c.path.join("/")] = n;
+    }
+    return out;
+  }
+
+  function markedKeysFor() {
+    return checks.filter((c) => marked.has(c.id)).map((c) => c.path.join("/"));
+  }
+
+  function buildExportJson(all) {
+    const selected = all ? null : marked;
+    const list = all ? checks : markedChecks();
+    const rule_sets = {};
+    for (const [name, tree] of Object.entries(original.rule_sets || {})) {
+      const next = attachNotesToTree(tree, ["rule_sets", name], selected);
+      rule_sets[name] = next || { node_metadata: tree.node_metadata || null };
+    }
+    const data = Object.assign({}, original, { rule_sets });
+    data[NOTES_FIELD] = notesMapFor(list);
+    data[MARKED_FIELD] = markedKeysFor();
+    return data;
+  }
+
+  function download(filename, text, mime) {
+    const blob = new Blob([text], { type: mime || "application/octet-stream" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+  }
+  function exportFileName(kind, ext) {
+    const base = (sourceName || "phased-gates").replace(/\.json$/i, "") || "phased-gates";
+    return `tsr-viewer-${base}.${kind}.${ext}`;
+  }
+
+  function compareDiffItems() {
+    if (!compareState) return [];
+    const items = [];
+    for (const c of checks) {
+      const k = compareKind(c);
+      if (!k || k === "same") continue;
+      const other = lookupCompare(c);
+      items.push({
+        path: checkPathOf(c),
+        number: c.number || "",
+        topic: c.topic,
+        session: c.session,
+        source: c.source,
+        kind: k,
+        current: c.status,
+        previous: other ? other.status : null
+      });
+    }
+    for (const leaf of goneLeaves()) {
+      const g = goneCheck(leaf);
+      items.push({
+        path: checkPathOf(g),
+        number: g.number || "",
+        topic: g.topic,
+        session: g.session,
+        source: g.source,
+        kind: "gone",
+        current: null,
+        previous: leaf.status
+      });
+    }
+    const order = { worsened: 0, changed: 1, gone: 2, added: 3, improved: 4 };
+    items.sort((a, b) => (order[a.kind] ?? 9) - (order[b.kind] ?? 9)
+      || String(a.number).localeCompare(String(b.number), "en", { numeric: true })
+      || String(a.topic).localeCompare(String(b.topic), "en"));
+    return items;
+  }
+  function buildCompareJson() {
+    const sys = (original && original.system && original.system.metadata) || {};
+    return {
+      generated_at: new Date().toISOString(),
+      current: {
+        name: sourceName,
+        cluster_name: sys.cluster_name || "",
+        cluster_id: sys.cluster_id || "",
+        cluster_version: sys.cluster_version || "",
+        checks: checks.length
+      },
+      compared_with: {
+        name: compareState ? compareState.name : "",
+        checks: compareState ? compareState.index.leaves.length : 0
+      },
+      summary: compareState ? (compareState.summary || summarizeCompare()) : null,
+      items: compareDiffItems()
+    };
+  }
+  function buildCompareHtml() {
+    const sys = (original && original.system && original.system.metadata) || {};
+    const items = compareDiffItems();
+    const s = (compareState && compareState.summary) || summarizeCompare() || {
+      changed: 0, improved: 0, worsened: 0, added: 0, gone: 0
+    };
+    const groups = { worsened: [], changed: [], gone: [], added: [], improved: [] };
+    for (const it of items) (groups[it.kind] || groups.changed).push(it);
+    const labels = {
+      worsened: "Worsened",
+      changed: "Status changed",
+      gone: "Gone from current",
+      added: "New in current",
+      improved: "Improved"
+    };
+    const css = `body{font-family:Arial,Helvetica,sans-serif;padding:20px;color:#111}
+h1{color:#ee0000;font-size:22pt;margin:0 0 8px}
+h2{font-size:16pt;margin:22px 0 8px}
+p,td,th{font-size:11pt}
+table{border-collapse:collapse;width:100%;margin:8px 0 18px}
+th,td{border:2px solid #ddd;padding:6px 8px;text-align:left;word-wrap:break-word}
+th{background:#be0000;color:#fff;text-align:center}
+tr:nth-child(even){background:#f2f2f2}
+.pass-button{height:1.25rem;display:inline-block;padding:0 .5rem;line-height:1.35rem;border-radius:25px;border:1px solid;margin:.25rem;font-size:12px;background:#C0C0C0;text-align:center}
+.muted{color:#555}`;
+    function statusCell(st) {
+      if (st == null || st === "") return `<span class="muted">—</span>`;
+      return tsrBadge(st);
+    }
+    let html = `<html>\n<head>\n<title>TSR status comparison</title>\n<style>\n${css}\n</style>\n</head>\n<body>\n`;
+    html += `<h1>TSR status comparison</h1>
+<p>Cluster <b>${escapeHtml(sys.cluster_name || "")}</b> · ${escapeHtml(sys.cluster_id || "")}</p>
+<p>Current: <b>${escapeHtml(sourceName)}</b> (${checks.length} checks)<br />
+Compared with: <b>${escapeHtml(compareState ? compareState.name : "")}</b> (${compareState ? compareState.index.leaves.length : 0} checks)</p>
+<table style="width:auto">
+<tr><th>Kind</th><th>Count</th></tr>
+<tr><td>Worsened</td><td>${s.worsened}</td></tr>
+<tr><td>Status changed</td><td>${s.changed}</td></tr>
+<tr><td>Improved</td><td>${s.improved}</td></tr>
+<tr><td>New in current</td><td>${s.added}</td></tr>
+<tr><td>Gone from current</td><td>${s.gone}</td></tr>
+</table>\n`;
+    for (const kind of ["worsened", "changed", "gone", "added", "improved"]) {
+      const rows = groups[kind] || [];
+      html += `<h2>${labels[kind]} (${rows.length})</h2>\n`;
+      if (!rows.length) {
+        html += `<p class="muted">None.</p>\n`;
+        continue;
+      }
+      html += `<table><tr><th>#</th><th>Topic</th><th>Session</th><th>Previous</th><th>Current</th></tr>`;
+      for (const it of rows) {
+        html += `<tr><td>${escapeHtml(it.number || "")}</td><td>${linkifyKcs(escapeHtml(it.topic || ""))}</td><td>${escapeHtml(it.session || "")}</td><td>${statusCell(it.previous)}</td><td>${statusCell(it.current)}</td></tr>`;
+      }
+      html += `</table>\n`;
+    }
+    html += `</body></html>`;
+    return html;
+  }
+
+  function tsrBadge(rt) {
+    const n = normalizeStatus(rt);
+    const label = statusLabel(n);
+    const color = {
+      fail: "#FF0000", warning: "#FFFF00", pass: "#008F00", info: "#0000FF",
+      skip: "#000000", skip_with_content: "#000000", na: "#000000",
+      limitation: "#FFFF00", "potential limitation": "#FFFF00",
+      "support limitation": "#FFFF00", "potential support limitation": "#FFFF00"
+    }[n] || "#000000";
+    return `<span class='pass-button' style="color:${color}"><b>${escapeHtml(label)}</b></span>`;
+  }
+  function renderPgResultHtml(result) {
+    if (!Array.isArray(result)) return renderGenericHtml(result);
+    let html = "";
+    for (const it of result) {
+      if (!it || typeof it !== "object") continue;
+      const msg = it.message == null ? "" : String(it.message);
+      const name = it.name == null ? "" : String(it.name);
+      const rt = it.response_type;
+      if (rt) {
+        html += `<li>${linkifyKcs(escapeHtml(name))}${name ? ": " : ""}${tsrBadge(rt)} - ${brHtml(msg)}</li>\n`;
+      } else if (msg) {
+        if (!name) html += `<b>${brHtml(msg)}</b><br />\n`;
+        else html += `<li>${linkifyKcs(escapeHtml(name))}: ${brHtml(msg)}</li>\n`;
+      }
+    }
+    return html;
+  }
+  function brHtml(s) {
+    return linkifyKcs(escapeHtml(s == null ? "" : s).replace(/\n/g, "<br />\n"));
+  }
+  function renderGenericHtml(obj, depth) {
+    depth = depth || 0;
+    if (obj == null) return "None";
+    if (typeof obj !== "object") return brHtml(obj);
+    if (Array.isArray(obj)) {
+      if (!obj.length) return "";
+      if (obj.every((x) => x && typeof x === "object" && !Array.isArray(x))) {
+        return "<ul>" + obj.map((item) => {
+          if (item.name && (item.scc || item.not_valid_after || item.message)) {
+            return Object.entries(item).map(([k, v]) => `<li><b>${escapeHtml(k)}</b> : ${renderGenericHtml(v, depth + 1)}</li>`).join("");
+          }
+          return `<li>${renderGenericHtml(item, depth + 1)}</li>`;
+        }).join("") + "</ul>";
+      }
+      return "<ul>" + obj.map((x) => `<li>${renderGenericHtml(x, depth + 1)}</li>`).join("") + "</ul>";
+    }
+    let html = "<ul>";
+    for (const [k, v] of Object.entries(obj)) {
+      if (k === "type") continue;
+      if (v && typeof v === "object") {
+        html += `<li><b>${escapeHtml(k)}</b></li>${renderGenericHtml(v, depth + 1)}`;
+      } else {
+        html += `<li><b>${escapeHtml(k)}</b>: ${brHtml(v)}</li>`;
+      }
+    }
+    return html + "</ul>";
+  }
+  function renderLinksHtml(content) {
+    const links = content && content.links;
+    if (!links || typeof links !== "object") return "";
+    let html = "";
+    for (const [g, arr] of Object.entries(links)) {
+      const list = Array.isArray(arr) ? arr : [arr];
+      html += `<b>${escapeHtml(String(g).toUpperCase())}</b><ul>`;
+      for (const u of list) {
+        html += `<li><a target=_blank href=${escapeHtml(u)}>${escapeHtml(u)}</a></li>`;
+      }
+      html += "</ul>";
+    }
+    return html;
+  }
+  function contentLines(content, keys) {
+    const out = [];
+    if (!content) return out;
+    for (const k of keys) {
+      const v = content[k];
+      if (Array.isArray(v)) v.forEach((x) => out.push(String(x)));
+      else if (typeof v === "string") out.push(v);
+    }
+    return out;
+  }
+  function hiddenClass(status) {
+    return (status === "fail" || status === "warning" || status === "limitation") ? "" : " class=\"hidden-row\"";
+  }
+  function renderCheckTable(c) {
+    const info = contentLines(c.content, ["rule_info"]).map(brHtml).join("<br />");
+    const warn = contentLines(c.content, ["warning"]);
+    const tips = contentLines(c.content, ["before", "after"]);
+    const impact = contentLines(c.content, ["impact", "remediation"]);
+    const numTopic = `${c.number ? escapeHtml(c.number) + " " : ""}${linkifyKcs(escapeHtml(c.topic))}`;
+    const head = info ? `${numTopic} <br/>${info}` : numTopic;
+    let html = `<table${hiddenClass(c.status)} width=100% style='table-layout:fixed;width:100%;'><tr><th style='width:10%;' width=10%>Check</th><td style='width:90%;' width=90%>${head}</td></tr>`;
+    html += `<tr><th>Status</th><td>${tsrBadge(c.status)}${warn.length ? " <br/>" + warn.map(brHtml).join("<br/>") : ""}</td></tr>`;
+    if (tips.length) html += `<tr><th>TIP</th><td>${tips.map(brHtml).join("<br />")}</td></tr>`;
+    if (impact.length) html += `<tr><th>Info</th><td>${impact.map(brHtml).join("<br />")}</td></tr>`;
+    html += `<tr><th>Result</th><td>`;
+    if (c.engine === "phased_gates" && Array.isArray(c.result)) html += renderPgResultHtml(c.result);
+    else html += `<li><b>result</b></li>${renderGenericHtml(c.result)}`;
+    html += `</td></tr>`;
+    const lh = renderLinksHtml(c.content);
+    if (lh) html += `<tr><th>Links</th><td>${lh}</td></tr>`;
+    const note = (notes[c.id] || "").trim();
+    if (note) html += `<tr><th>Notes</th><td class="notes">${brHtml(note)}</td></tr>`;
+    html += `</table><br class="hidden-row" />\n`;
+    return html;
+  }
+
+  function buildTsrHtml(exported) {
+    exported = exported || markedChecks();
+    const sys = (original.system && original.system.metadata) || {};
+    const ccx = exported.filter((c) => c.engine === "ccx_rules_ocp");
+    const pg = exported.filter((c) => c.engine === "phased_gates");
+    const stN = (arr, st) => arr.filter((c) => c.status === st).length;
+    const skipCcx = stN(ccx, "skip") + stN(ccx, "skip_with_content");
+    const skipPg = stN(pg, "skip") + stN(pg, "skip_with_content");
+    const sessionsOrder = [
+      "Networking", "Ocs", "Rules", "Security", "Shift", "Storage",
+      ...Object.values(PG_SESSION),
+      "Must Gather Collection", "Data Capture Timestamps"
+    ];
+    const bySession = {};
+    for (const c of exported) (bySession[c.session] ||= []).push(c);
+    const sessionNames = uniqueSorted(Object.keys(bySession)).sort((a, b) => {
+      const ia = sessionsOrder.indexOf(a), ib = sessionsOrder.indexOf(b);
+      if (ia >= 0 && ib >= 0) return ia - ib;
+      if (ia >= 0) return -1;
+      if (ib >= 0) return 1;
+      return a.localeCompare(b, "en");
+    });
+
+    const css = `ol{margin:0;padding:0}
+table td,table th{padding:4}
+li{color:#000;font-size:11pt;font-family:Arial,Helvetica,sans-serif}
+p{margin:0;color:#000;font-size:11pt;font-family:Arial,Helvetica,sans-serif}
+h1{padding-top:0;color:#ee0000;font-size:26pt;padding-bottom:3pt;font-family:Arial,Helvetica,sans-serif}
+h2{padding-top:10pt;color:#000;font-weight:700;font-size:18pt;padding-bottom:10pt}
+h3{padding-top:0;color:#434343;font-size:14pt;padding-bottom:10pt}
+.pass-button{height:1.25rem;display:inline-block;padding:0 .5rem;line-height:1.35rem;border-radius:25px;border:1px solid;margin:.25rem;font-size:12px;background:#C0C0C0;text-align:center}
+body{font-family:Arial,Helvetica,sans-serif;padding:20px}
+table,td{border-collapse:collapse;border:2px solid #ddd;padding:8px;word-wrap:break-word}
+tr:nth-child(even){background:#f2f2f2}
+th{padding-top:12px;padding-bottom:12px;text-align:center;background-color:#be0000;color:#fff}
+.notes{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Courier New",monospace;font-size:10pt;white-space:pre-wrap}
+.hidden-row{}`;
+
+    let html = `<html>\n<head>\n<title>Technical Supportability Review (TSR)</title>\n<style>\n${css}\n</style>\n</head>\n<body>\n`;
+    html += `<article id='cover'><title>Technical Supportability Review (TSR)</title>
+<center><h1>Technical Supportability Review (TSR)</h1></center>
+<center><font size=+1>for cluster "${escapeHtml(sys.cluster_name || "")}"<br />${escapeHtml(sys.cluster_id || "")}</font></center>
+<p>${exported.length === checks.length ? "Full export" : "Selected export"} (${exported.length} checks) generated from ${escapeHtml(sourceName)}.</p>
+</article>\n`;
+    html += `<h1>How to interpret the Insights results</h1>
+<li>${tsrBadge("pass")}: basically all as expected</li>
+<li>${tsrBadge("info")}: is used if the rule doesn't test, but shows needful data</li>
+<li>${tsrBadge("warning")}: a finding calling for your attention</li>
+<li>${tsrBadge("fail")}: not as expected/documented</li>
+<li>${tsrBadge("skip")}: The data to perform the check is not available</li>
+<li>${tsrBadge("na")}: The check gets not executed for a reason</li>
+<br />\n`;
+    html += `<h1>Executive Summary</h1>
+<table style='table-layout:fixed;'>
+<tr><th width=200>Result</th><th width=150>CCX OCP</th><th width=150>Phased Gates</th></tr>
+<tr><td align=center>${tsrBadge("pass")}</td><td align=center>${stN(ccx,"pass")}</td><td align=center>${stN(pg,"pass")}</td></tr>
+<tr><td align=center>${tsrBadge("fail")}</td><td align=center>${stN(ccx,"fail")}</td><td align=center>${stN(pg,"fail")}</td></tr>
+<tr><td align=center>${tsrBadge("warning")}</td><td align=center>${stN(ccx,"warning")||" - "}</td><td align=center>${stN(pg,"warning")}</td></tr>
+<tr><td align=center>${tsrBadge("info")}</td><td align=center>${stN(ccx,"info")}</td><td align=center>${stN(pg,"info")}</td></tr>
+<tr><td align=center>${tsrBadge("skip")}</td><td align=center>${skipCcx}</td><td align=center>${skipPg}</td></tr>
+<tr><td align=center>${tsrBadge("na")}</td><td align=center>${stN(ccx,"na")||" - "}</td><td align=center>${stN(pg,"na")}</td></tr>
+<tr><td align=center colspan=1><b>Total</b></td><td align=center>${ccx.length}</td><td align=center>${pg.length}</td></tr>
+</table><br />\n`;
+
+    html += `<h1>Summary of Checks</h1>\n`;
+    const ccxSessions = sessionNames.filter((s) => (bySession[s] || []).some((c) => c.engine === "ccx_rules_ocp"));
+    const pgSessions = sessionNames.filter((s) => (bySession[s] || []).some((c) => c.engine === "phased_gates"));
+    if (ccxSessions.length) {
+      html += `<h2>CCX OCP</h2>\n`;
+      for (const s of ccxSessions) {
+        const items = bySession[s].filter((c) => c.engine === "ccx_rules_ocp");
+        html += sessionSummary(s, items, true);
+      }
+    }
+    if (pgSessions.length) {
+      html += `<h2>Phased Gates</h2>\n`;
+      for (const s of pgSessions) {
+        const items = bySession[s].filter((c) => c.engine === "phased_gates");
+        html += sessionSummary(s, items, false);
+      }
+    }
+
+    html += `<h1>Supportability Assessment Checks</h1>
+Cluster Identification:
+<ul>
+<li>Cluster-Name : ${escapeHtml(sys.cluster_name || "")}</li>
+<li>Cluster-ID : ${escapeHtml(sys.cluster_id || "")}</li>
+<li>Version : ${escapeHtml(sys.cluster_version || "")}</li>
+</ul>
+<br /><button onclick="toggleRowVisibility()">Toggle Row Visibility for rules having Status as not FAIL / WARNING / LIMITATION </button><br />\n`;
+
+    for (const s of pgSessions) {
+      const items = bySession[s].filter((c) => c.engine === "phased_gates");
+      html += `<h3>${escapeHtml(s)}</h3>\n`;
+      for (const c of items) html += renderCheckTable(c);
+    }
+
+    const notable = ccx.filter((c) => c.status === "fail" || c.status === "warning" || c.status === "info");
+    if (notable.length) {
+      html += `<h1>Additional Notable Findings</h1>\n`;
+      const groups = {};
+      for (const c of notable) (groups[c.session] ||= []).push(c);
+      for (const s of Object.keys(groups)) {
+        html += `<h3>${escapeHtml(s)}</h3>\n`;
+        for (const c of groups[s]) html += renderCheckTable(c);
+      }
+    }
+    html += `<script>
+function toggleRowVisibility() {
+  var elements = document.getElementsByClassName("hidden-row");
+  for (var i = 0; i < elements.length; i++) {
+    if (elements[i].style.display === "none") elements[i].style.display = "";
+    else elements[i].style.display = "none";
+  }
+}
+<\/script>
+</body>\n</html>`;
+    return html;
+  }
+  function sessionSummary(name, items, ccxStyle) {
+    const order = ["pass", "fail", "warning", "info", "skip", "skip_with_content", "na"];
+    const colorOf = (st) => ({
+      fail: "#FF0000", warning: "#FFFF00", pass: "#008F00", info: "#0000FF",
+      skip: "#000000", skip_with_content: "#000000", na: "#000000"
+    }[st] || "#000000");
+    const counts = order.map((st) => {
+      const n = items.filter((c) => c.status === st).length;
+      if (!n) return "";
+      const lab = st === "skip_with_content" ? "SKIP" : statusLabel(st);
+      return `<b><span class='pass-button' style="color:${colorOf(st)}"><b>${escapeHtml(lab)}: ${n}</b></span></b>&nbsp;&nbsp;&nbsp;`;
+    }).join("");
+    let html = `<h3>${escapeHtml(name)}<br />${counts}</h3>\n<table>\n<tr><th>#</th><th>Result</th><th>Topic</th></tr>\n`;
+    const rows = ccxStyle ? items.filter((c) => c.status === "fail" || c.status === "warning" || c.status === "info") : items;
+    for (const c of rows) {
+      const num = c.number || (c.key || "").replace(/_/g, ".");
+      html += `<tr><td align=right>${escapeHtml(num)}</td><td align=center>${tsrBadge(c.status)}</td><td>${linkifyKcs(escapeHtml(c.topic))}</td></tr>\n`;
+    }
+    html += `</table><br />\n`;
+    return html;
+  }
+
+  async function loadFile(file) {
+    if (!confirmReplaceDocument()) return;
+    const blob = file.slice(0, file.size, file.type || "application/json");
+    $("meta").textContent = `Reading ${file.name} (${formatBytes(file.size)})…`;
+    await yieldUi();
+    try {
+      const text = await blob.text();
+      $("meta").textContent = `Parsing ${file.name} (${formatBytes(file.size)})…`;
+      await yieldUi();
+      const obj = JSON.parse(text);
+      ingest(obj, file.name, { blob });
+    } catch (e) {
+      alert("Failed to read JSON: " + e.message);
+      $("meta").textContent = "Failed to load JSON.";
+    }
+  }
+
+  /* presets */
+  function setGroup(id, values) {
+    const set = getSet(id);
+    set.clear();
+    (values || []).forEach((v) => set.add(v));
+    $(id).querySelectorAll("input[type=checkbox]").forEach((i) => {
+      i.checked = set.has(i.value);
+    });
+  }
+  $("presets").innerHTML = [
+    ["All", "all"],
+    ["Problems", "problems"],
+    ["FAIL", "fail"],
+    ["WARNING", "warning"],
+    ["PASS", "pass"],
+    ["CCX", "ccx"],
+    ["Phased Gates", "pg"]
+  ].map(([l, v]) => `<button class="chip" data-preset="${v}">${l}</button>`).join("");
+
+  $("presets").addEventListener("click", (e) => {
+    const p = e.target.dataset.preset;
+    if (!p) return;
+    $("qHideSkipNa").checked = false;
+    $("qInnerFail").checked = false;
+    if (p === "all") {
+      engineFilter = "";
+      FILTER_GROUP_IDS.forEach((id) => setGroup(id, []));
+      $("qSearch").value = $("qTopic").value = $("qNumber").value = $("qError").value = $("qComponent").value = $("qSkip").value = "";
+      $("qLinks").value = "";
+    } else if (p === "problems") {
+      setGroup("fltStatus", ["fail", "warning"]);
+    } else if (p === "fail" || p === "warning" || p === "pass") {
+      setGroup("fltStatus", [p]);
+    } else if (p === "ccx") {
+      engineFilter = "ccx_rules_ocp";
+    } else if (p === "pg") {
+      engineFilter = "phased_gates";
+    }
+    applyFilters();
+  });
+
+  $("btnClear").onclick = () => {
+    FILTER_GROUP_IDS.forEach((id) => getSet(id).clear());
+    FILTER_TEXT_IDS.forEach((id) => { $(id).value = ""; });
+    $("qLinks").value = "";
+    $("qHideSkipNa").checked = false;
+    $("qInnerFail").checked = false;
+    $("qOnlyMarked").checked = false;
+    $("qOnlyNotes").checked = false;
+    $("qCompare").value = "";
+    engineFilter = "";
+    if (checks.length) fillFilterOptions();
+    applyFilters();
+  };
+
+  ["qSearch", "qTopic", "qNumber", "qError", "qComponent", "qSkip", "qLinks", "sortBy"].forEach((id) => {
+    $(id).addEventListener("input", applyFilters);
+    $(id).addEventListener("change", applyFilters);
+  });
+  ["qInnerFail", "qHideSkipNa", "qOnlyMarked", "qOnlyNotes", "qCompare"].forEach((id) => $(id).addEventListener("change", applyFilters));
+
+  function refilterGroup(boxId, searchId) {
+    const arr = JSON.parse($(boxId).dataset.values || "[]");
+    renderChecks($(boxId), arr, boxId, searchId);
+    applyFilters();
+  }
+  $("qSession").addEventListener("input", () => refilterGroup("fltSession", "qSession"));
+  $("qTopicPick").addEventListener("input", () => refilterGroup("fltTopic", "qTopicPick"));
+  $("qSub").addEventListener("input", () => refilterGroup("fltSub", "qSub"));
+  $("qTag").addEventListener("input", () => refilterGroup("fltTags", "qTag"));
+
+  $("activeFilters").addEventListener("click", (e) => {
+    const btn = e.target.closest("button.x");
+    if (!btn) return;
+    e.preventDefault();
+    removeActiveFilter(btn.dataset.kind, btn.dataset.key, decodeURIComponent(btn.dataset.value || ""));
+  });
+
+  $("sidebar").addEventListener("change", (e) => {
+    if (!e.target.matches("input[type=checkbox]")) return;
+    const group = e.target.closest("[id^='flt']");
+    if (group) {
+      const set = getSet(group.id);
+      if (e.target.checked) set.add(e.target.value);
+      else set.delete(e.target.value);
+    }
+    applyFilters();
+  });
+
+  $("tableWrap").addEventListener("click", (e) => {
+    const linkBtn = e.target.closest(".link-btn");
+    if (linkBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const href = linkBtn.getAttribute("data-href");
+      const full = location.origin + href;
+      navigator.clipboard.writeText(full).then(() => {
+        linkBtn.classList.add("copied");
+        setTimeout(() => linkBtn.classList.remove("copied"), 1200);
+      }).catch(() => {
+        prompt("Copy the link:", full);
+      });
+      return;
+    }
+    const expand = e.target.closest(".note-expand");
+    if (expand) {
+      e.preventDefault();
+      openNoteModal(expand.getAttribute("data-note-id"));
+      return;
+    }
+    if (e.target.closest("input.mark, #markAll, textarea.note, .note-wrap, .col-resizer")) return;
+    const tr = e.target.closest("tr[data-id]");
+    if (!tr) return;
+    selectRow(tr.getAttribute("data-id"), false);
+  });
+  $("tableWrap").addEventListener("mousedown", (e) => {
+    const handle = e.target.closest(".col-resizer");
+    if (handle) startColResize(e, handle);
+  });
+  $("tableWrap").addEventListener("touchstart", (e) => {
+    const handle = e.target.closest(".col-resizer");
+    if (handle) startColResize(e, handle);
+  }, { passive: false });
+  $("tableWrap").addEventListener("dblclick", (e) => {
+    const handle = e.target.closest(".col-resizer");
+    if (!handle) return;
+    e.preventDefault();
+    resetColWidth(handle.getAttribute("data-col"));
+  });
+  $("tableWrap").addEventListener("focusin", (e) => {
+    if (!e.target.classList.contains("note")) return;
+    const tr = e.target.closest("tr[data-id]");
+    if (!tr) return;
+    const id = tr.getAttribute("data-id");
+    if (selectedId === id) return;
+    selectRow(id, false);
+  });
+  $("tableWrap").addEventListener("input", (e) => {
+    if (!e.target.classList.contains("note")) return;
+    const tr = e.target.closest("tr[data-id]");
+    if (tr) setNote(tr.getAttribute("data-id"), e.target.value);
+  });
+  $("tableWrap").addEventListener("change", (e) => {
+    if (e.target.id === "markAll") {
+      setMarks(filtered.map((c) => c.id), e.target.checked);
+      return;
+    }
+    if (e.target.classList.contains("mark")) {
+      const tr = e.target.closest("tr[data-id]");
+      if (tr) setMark(tr.getAttribute("data-id"), e.target.checked);
+    }
+  });
+  $("colPickerList").addEventListener("change", (e) => {
+    const id = e.target.getAttribute("data-col");
+    if (!id) return;
+    if (!setColVisible(id, e.target.checked)) e.target.checked = true;
+  });
+  $("colPickerList").addEventListener("click", (e) => {
+    if (e.target.id === "btnColsAll") {
+      e.preventDefault();
+      showAllColumns();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    const picker = $("colPicker");
+    if (picker && picker.open && !picker.contains(e.target)) picker.open = false;
+  });
+
+  $("file").addEventListener("change", (e) => {
+    const f = e.target.files && e.target.files[0];
+    e.target.value = "";
+    if (f) loadFile(f);
+  });
+  $("fileCompare").addEventListener("change", (e) => {
+    const f = e.target.files && e.target.files[0];
+    e.target.value = "";
+    if (f) loadCompareFile(f);
+  });
+  $("btnJson").onclick = () => {
+    if (!marked.size) { alert("Mark at least one check to export."); return; }
+    const data = buildExportJson(false);
+    download(exportFileName("selected", "json"), JSON.stringify(data, null, 2), "application/json");
+  };
+  $("btnHtml").onclick = () => {
+    if (!marked.size) { alert("Mark at least one check to export."); return; }
+    download(exportFileName("selected", "html"), buildTsrHtml(markedChecks()), "text/html");
+  };
+  $("btnJsonAll").onclick = () => {
+    if (!original) return;
+    const data = buildExportJson(true);
+    download(exportFileName("all", "json"), JSON.stringify(data, null, 2), "application/json");
+  };
+  $("btnHtmlAll").onclick = () => {
+    if (!original) return;
+    download(exportFileName("all", "html"), buildTsrHtml(checks), "text/html");
+  };
+  $("btnJsonCmp").onclick = () => {
+    if (!compareState) { alert("Load a second JSON to compare first."); return; }
+    download(exportFileName("compare", "json"), JSON.stringify(buildCompareJson(), null, 2), "application/json");
+  };
+  $("btnHtmlCmp").onclick = () => {
+    if (!compareState) { alert("Load a second JSON to compare first."); return; }
+    download(exportFileName("compare", "html"), buildCompareHtml(), "text/html");
+  };
+  $("btnMarkVisible").onclick = () => setMarks(filtered.map((c) => c.id), true);
+  $("btnUnmarkVisible").onclick = () => setMarks(filtered.map((c) => c.id), false);
+  $("btnClearMarks").onclick = () => {
+    marked.clear();
+    if ($("detailMark")) $("detailMark").checked = false;
+    if ($("qOnlyMarked").checked) applyFilters();
+    else {
+      $("tableWrap").querySelectorAll("tr[data-id]").forEach((tr) => {
+        const cb = tr.querySelector("input.mark");
+        if (cb) cb.checked = false;
+        tr.classList.remove("export-mark");
+      });
+      updateMarkChrome();
+      persistUi();
+    }
+  };
+  $("btnForget").onclick = () => forgetSession();
+  $("btnHelp").onclick = () => openHelp();
+  $("helpModalClose").onclick = () => closeHelp();
+  $("helpModalBackdrop").onclick = () => closeHelp();
+
+  function isHelpOpen() {
+    return $("helpModal") && !$("helpModal").hidden;
+  }
+  function openHelp() {
+    $("helpModal").hidden = false;
+  }
+  function closeHelp() {
+    $("helpModal").hidden = true;
+  }
+  function toggleHelp() {
+    $("helpModal").hidden = !$("helpModal").hidden;
+  }
+
+  $("detail").addEventListener("click", (e) => {
+    const expand = e.target.closest(".note-expand");
+    if (!expand) return;
+    e.preventDefault();
+    openNoteModal(expand.getAttribute("data-note-id"));
+  });
+  $("noteModalText").addEventListener("input", () => {
+    if (noteModalId) setNote(noteModalId, $("noteModalText").value);
+  });
+  $("noteModalDone").onclick = () => closeNoteModal();
+  $("noteModalClose").onclick = () => closeNoteModal();
+  $("noteModalBackdrop").onclick = () => closeNoteModal();
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (isHelpOpen()) {
+        e.preventDefault();
+        closeHelp();
+        return;
+      }
+      if (noteModalId) {
+        e.preventDefault();
+        closeNoteModal();
+        return;
+      }
+    }
+    if (e.key === "?" && !e.ctrlKey && !e.metaKey && !e.altKey && !typingInField()) {
+      e.preventDefault();
+      toggleHelp();
+      return;
+    }
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && !e.altKey && (e.key === "ArrowDown" || e.key === "ArrowUp")) {
+      if (noteModalId) return;
+      e.preventDefault();
+      selectAdjacentMarked(e.key === "ArrowDown" ? 1 : -1);
+      return;
+    }
+    if ((e.ctrlKey || e.metaKey) && !e.altKey && !e.shiftKey && (e.key === "ArrowDown" || e.key === "ArrowUp")) {
+      if (noteModalId) return;
+      e.preventDefault();
+      selectAdjacentRow(e.key === "ArrowDown" ? 1 : -1);
+      return;
+    }
+    if ((e.ctrlKey || e.metaKey) && !e.altKey && !e.shiftKey && (e.key === "m" || e.key === "M")) {
+      if (noteModalId) return;
+      e.preventDefault();
+      if (!selectedId) return;
+      const cur = findCheck(selectedId);
+      if (cur && cur.gone) return;
+      setMark(selectedId, !marked.has(selectedId));
+      return;
+    }
+    if (e.key === "/" && !typingInField()) {
+      e.preventDefault();
+      $("qSearch").focus();
+    }
+  });
+
+  ["dragenter", "dragover"].forEach((ev) => {
+    window.addEventListener(ev, (e) => { e.preventDefault(); app.classList.add("drop"); });
+  });
+  ["dragleave", "drop"].forEach((ev) => {
+    window.addEventListener(ev, (e) => { e.preventDefault(); app.classList.remove("drop"); });
+  });
+  window.addEventListener("drop", (e) => {
+    const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    if (f && /\.json$/i.test(f.name)) loadFile(f);
+  });
+
+  function stackedLayout() {
+    return window.matchMedia("(max-width: 980px)").matches;
+  }
+  function setSidebarHidden(hide) {
+    layout.sidebarHidden = !!hide;
+    document.querySelector(".main").classList.toggle("sidebar-hidden", !!hide);
+    saveLayout(layout);
+  }
+  function applyLayout() {
+    const root = document.documentElement;
+    root.style.setProperty("--sidebar-w", Math.round(layout.sidebarW) + "px");
+    root.style.setProperty("--sidebar-h", (layout.sidebarH * 100) + "vh");
+    root.style.setProperty("--detail-h", Number.isFinite(layout.detailPx)
+      ? Math.round(layout.detailPx) + "px"
+      : (layout.detailH * 100) + "vh");
+  }
+  function resetLayout() {
+    layout = {
+      ...LAYOUT_DEFAULT,
+      cols: Object.assign({}, COL_DEFAULTS),
+      colVisible: sanitizeColVisible(null),
+      colRev: 2,
+      sidebarHidden: false
+    };
+    delete layout.detailPx;
+    setSidebarHidden(false);
+    applyLayout();
+    applyColWidths();
+    renderColPicker();
+    if (original) renderTable();
+    saveLayout(layout);
+  }
+  applyLayout();
+  if (layout.sidebarHidden) setSidebarHidden(true);
+  renderColPicker();
+
+  function bindSplitter(el, kind) {
+    const startDrag = (ev) => {
+      if (ev.type === "mousedown" && ev.button !== 0) return;
+      ev.preventDefault();
+      const main = document.querySelector(".main");
+      const content = $("content");
+      const rectMain = main.getBoundingClientRect();
+      const rectContent = content.getBoundingClientRect();
+      const stacked = stackedLayout();
+      const point = (e) => {
+        const t = e.touches ? e.touches[0] : e;
+        return { x: t.clientX, y: t.clientY };
+      };
+      el.classList.add("dragging");
+      const cls = kind === "v" && stacked ? "resizing-v-stack" : (kind === "v" ? "resizing-v" : "resizing-h");
+      document.body.classList.add(cls);
+      const move = (e) => {
+        if (e.cancelable) e.preventDefault();
+        const p = point(e);
+        if (kind === "v" && !stacked) {
+          const max = rectMain.width - 280;
+          layout.sidebarW = Math.max(180, Math.min(max, p.x - rectMain.left));
+        } else if (kind === "v" && stacked) {
+          const frac = (p.y - rectMain.top) / rectMain.height;
+          layout.sidebarH = Math.max(0.15, Math.min(0.75, frac));
+        } else {
+          const h = rectContent.bottom - p.y;
+          const max = rectContent.height - 140;
+          layout.detailPx = Math.max(120, Math.min(max, h));
+        }
+        applyLayout();
+      };
+      const stop = () => {
+        el.classList.remove("dragging");
+        document.body.classList.remove("resizing-v", "resizing-h", "resizing-v-stack");
+        window.removeEventListener("mousemove", move);
+        window.removeEventListener("mouseup", stop);
+        window.removeEventListener("touchmove", move);
+        window.removeEventListener("touchend", stop);
+        saveLayout(layout);
+      };
+      window.addEventListener("mousemove", move);
+      window.addEventListener("mouseup", stop);
+      window.addEventListener("touchmove", move, { passive: false });
+      window.addEventListener("touchend", stop);
+    };
+    el.addEventListener("mousedown", startDrag);
+    el.addEventListener("touchstart", startDrag, { passive: false });
+    el.addEventListener("dblclick", () => {
+      if (kind === "v") {
+        layout.sidebarW = LAYOUT_DEFAULT.sidebarW;
+        layout.sidebarH = LAYOUT_DEFAULT.sidebarH;
+      } else {
+        layout.detailH = LAYOUT_DEFAULT.detailH;
+        delete layout.detailPx;
+      }
+      applyLayout();
+      saveLayout(layout);
+    });
+    el.addEventListener("keydown", (e) => {
+      const step = e.shiftKey ? 40 : 16;
+      if (kind === "v" && !stackedLayout()) {
+        if (e.key === "ArrowLeft") { layout.sidebarW = Math.max(180, layout.sidebarW - step); e.preventDefault(); }
+        if (e.key === "ArrowRight") { layout.sidebarW = Math.min(window.innerWidth - 280, layout.sidebarW + step); e.preventDefault(); }
+      } else if (kind === "v") {
+        if (e.key === "ArrowUp") { layout.sidebarH = Math.max(0.15, layout.sidebarH - 0.04); e.preventDefault(); }
+        if (e.key === "ArrowDown") { layout.sidebarH = Math.min(0.75, layout.sidebarH + 0.04); e.preventDefault(); }
+      } else {
+        if (e.key === "ArrowUp") {
+          layout.detailPx = (layout.detailPx || $("detail").getBoundingClientRect().height) + step;
+          e.preventDefault();
+        }
+        if (e.key === "ArrowDown") {
+          layout.detailPx = Math.max(120, (layout.detailPx || $("detail").getBoundingClientRect().height) - step);
+          e.preventDefault();
+        }
+      }
+      applyLayout();
+      saveLayout(layout);
+    });
+  }
+  bindSplitter($("splitV"), "v");
+  bindSplitter($("splitH"), "h");
+  $("btnResetLayout").onclick = resetLayout;
+  $("btnToggleSidebar").onclick = () => setSidebarHidden(!layout.sidebarHidden);
+  window.addEventListener("resize", applyLayout);
+
+  window.TSRViewer = {
+    ingest,
+    applyFilters,
+    buildExportJson,
+    buildTsrHtml,
+    buildCompareJson,
+    buildCompareHtml,
+    getChecks: () => checks,
+    getFiltered: () => filtered,
+    getMarked: () => markedChecks(),
+    getNotes: () => Object.assign({}, notes)
+  };
+
+  ["beforeunload", "pagehide"].forEach((ev) => {
+    window.addEventListener(ev, () => {
+      if (!original) return;
+      try { localStorage.setItem(UI_KEY, JSON.stringify(collectUiState())); } catch (_) {}
+    });
+  });
+
+  window.addEventListener("hashchange", () => {
+    if (applyingHash || !checks.length) return;
+    applyCheckHash();
+  });
+  restoreSession();
+})();
+</script>
+</body>
+</html>
