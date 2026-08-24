@@ -8,6 +8,8 @@ A self-contained HTML viewer for **Phased Gates** JSON reports generated from Op
 
 `tsr-viewer.html` is a single-file HTML application (no external dependencies) that lets you load, browse, filter, annotate, and export Phased Gates analysis results from OpenShift clusters. It works entirely offline in the browser.
 
+> **Privacy:** All data is processed locally in your browser. No information is sent to any external server — your JSON files never leave your machine.
+
 ## Usage
 
 1. Open `index.html` (or `tsr-viewer.html`) in any modern browser.
